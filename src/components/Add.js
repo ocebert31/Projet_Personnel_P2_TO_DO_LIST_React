@@ -8,9 +8,12 @@ function Add({ addTask }) {
     };
 
     const handleChange = () => {
-        const newTask = { name: name, id: generateUID() };
-        addTask(newTask);
-        setName('');
+        const newName = name.trim();
+        if (newName !== '') {
+            const newTask = { name: newName, id: generateUID() };
+            addTask(newTask);
+            setName('');
+        }
     };
 
     const generateUID = () => {

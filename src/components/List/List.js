@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import Add from './Add';
+import Add from '../Add';
 import './List.css';
 
 function List() {
