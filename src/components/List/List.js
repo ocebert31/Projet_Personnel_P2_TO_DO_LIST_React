@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import Add from '../Add';
+import Add from '../Add/Add';
 import './List.css';
 
 function List() {
@@ -13,6 +13,7 @@ function List() {
     }, []);
 
     const addTask = (newTask) => {
+        console.log(newTask)
         const taskList = [...tasks, newTask];
         setTasks(taskList);
         localStorage.setItem('tasks', JSON.stringify(taskList));
