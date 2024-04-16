@@ -34,32 +34,13 @@ describe('List', () => {
     })
 
     describe('when we would to set a task', () => {
-        // it('should return task', () => {
-        // // Définir une valeur valide pour la clé 'tasks' dans le localStorage
-        // const initialTasks = [{ id: '1', name: 'POUET' }];
-        // localStorage.setItem('tasks', JSON.stringify(initialTasks));
+        it('should return task', () => {
+            const initialTasks = [{ id: '1', name: 'POUET' }];
+            localStorage.setItem('tasks', JSON.stringify(initialTasks));
+            console.log(initialTasks)
 
-        // // Rendre le composant List
-        // const { container } = render(<List />);
-
-        // // Récupérer l'élément racine du composant
-        // const listComponent = container.firstChild;
-
-        // // Récupérer la fonction addTask du composant
-        // const addTaskFunction = listComponent.addTask;
-
-        // // Appeler addTask avec une nouvelle tâche
-        // addTaskFunction({ id: '2', name: 'Test-2' });
-
-        // // Vérifier qu'il y a deux éléments <li> dans le DOM
-        // const listElements = container.querySelectorAll('li');
-        // expect(listElements).toHaveLength(2);
-        // })
+            const component = render(<List />);
+            console.log(component)
+        })
     })
 });
-
-
-
-
-// console.log(addTask('exemple'))
-// expect(List.addTask('exemple')).toBe('exemple')

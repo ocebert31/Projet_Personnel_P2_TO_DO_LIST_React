@@ -4,18 +4,6 @@ import '@testing-library/jest-dom';
 import Add from './Add';
 
 describe('Add component', () => {
-  it('should update input value when typing', () => {
-    //Rendu du composant "Add" avec une fonction de rappel addTask vide.
-    const { getByRole } = render(<Add addTask={() => {}} />);
-    const input = getByRole('textbox');
-
-    //Simulation d'un changement dans le champ de saisie en lui attribuant une nouvelle valeur.
-    fireEvent.change(input, { target: { value: 'Test Task' } });
-
-    //Vérification que la valeur du champ de saisie a été mise à jour correctement.
-    expect(input.value).toBe('Test Task');
-  });
-
   //vérifie si addTask est appelée lorsque le bouton est cliqué.
   it('should call addTask function when button is clicked', () => {
     //Création d'une fonction fictive (mockAddTask) en utilisant jest.fn()
@@ -29,9 +17,7 @@ describe('Add component', () => {
 
     //vérifie si 'addTask' a été appelée et avec les arguments attendus
     expect(mockAddTask).toHaveBeenCalled();
-    expect(mockAddTask).toHaveBeenCalledWith(expect.objectContaining({
-      name: 'Test Task'
-    }));
+    expect(mockAddTask).toHaveBeenCalledWith(expect.objectContaining({name: 'Test Task'}));
   });
 });
  

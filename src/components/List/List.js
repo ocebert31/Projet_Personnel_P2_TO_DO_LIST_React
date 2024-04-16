@@ -6,10 +6,9 @@ function List() {
     const [tasks, setTasks] = useState([]);
 
     useEffect(() => {
-        const taskList = JSON.parse(localStorage.getItem('tasks'));
-        if (taskList) {
-            setTasks(taskList);
-        }
+        const savedTaskList = localStorage.getItem('tasks')
+        if (savedTaskList)
+            setTasks(JSON.parse(savedTaskList));
     }, []);
 
     const addTask = (newTask) => {
@@ -33,6 +32,5 @@ function List() {
 }
 
 export default List;
- 
 
 //node_modules/.bin/jest
