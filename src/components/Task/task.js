@@ -1,17 +1,20 @@
 import React from 'react';
 import DeleteButton from '../ElementOfTask/DeleteButton';
+import EditTask from '../ElementOfTask/EditButton';
+import './task.css';
 
-function task({ task, deleteTask }) {
+function Task({ task, editTask, deleteTask}) {
     const handleDeleteClick = () => {
-        deleteTask(task.id);
+         deleteTask(task.id);
     };
 
     return (
-        <li className='style-list'>
-            {task.name}
+        <div className='alignment-button'>
+            <EditTask task={task} editTask={editTask}/>
             <DeleteButton onClick={handleDeleteClick} />
-        </li>
-    );
-}
+        </div>
+    )
+ }
 
-export default task;
+export default Task;
+

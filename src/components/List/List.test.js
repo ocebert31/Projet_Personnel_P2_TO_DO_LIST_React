@@ -33,14 +33,18 @@ describe('List', () => {
         })
     })
 
-    describe('when we would to set a task', () => {
-        it('should return task', () => {
-            const initialTasks = [{ id: '1', name: 'POUET' }];
-            localStorage.setItem('tasks', JSON.stringify(initialTasks));
-            console.log(initialTasks)
+    // describe('when we would to set a task', () => {
+    //     it('should return task', () => {
+    //         const initialTasks = [{ id: '1', name: 'POUET' }];
+    //         localStorage.setItem('tasks', JSON.stringify(initialTasks));
+    //         console.log(initialTasks)
 
-            const component = render(<List />);
-            console.log(component)
-        })
-    })
+    //         const component = render(<List />);
+    //         console.log(component)
+    //     })
+    // })
+
+    // describe('when we would to delete a task,' () => {
+        
+    // })
 });

@@ -7,13 +7,12 @@ function List() {
     const [tasks, setTasks] = useState([]);
 
     useEffect(() => {
-        const savedTaskList = localStorage.getItem('tasks')
+        const savedTaskList = localStorage.getItem('tasks');
         if (savedTaskList)
             setTasks(JSON.parse(savedTaskList));
     }, []);
 
     const addTask = (newTask) => {
-        console.log(newTask)
         const taskList = [...tasks, newTask];
         setTasks(taskList);
         localStorage.setItem('tasks', JSON.stringify(taskList));
@@ -25,13 +24,24 @@ function List() {
         localStorage.setItem('tasks', JSON.stringify(updatedTasks));
     };
 
+    const editTask = (taskId, newName) => {
+        const updatedTasks = tasks.map(task => {
+            if (task.id === taskId) {
+                return { ...task, name: newName }; // Mise à jour du nom de la tâche
+            }
+            return task;
+        });
+        setTasks(updatedTasks);
+        localStorage.setItem('tasks', JSON.stringify(updatedTasks));
+    };
+
     return (
         <div>
             <h1>To Do List with React</h1>
             <Add addTask={addTask} />
             <ul>
                 {tasks.map(task => (
-                    <Task key={task.id} task={task} deleteTask={deleteTask} />
+                    <Task key={task.id} task={task} deleteTask={deleteTask} editTask={editTask} />
                 ))}
             </ul>
         </div>
