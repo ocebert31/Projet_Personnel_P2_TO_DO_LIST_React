@@ -1,16 +1,16 @@
 import React from 'react';
 import DeleteButton from '../ElementOfTask/DeleteButton';
-import EditTask from '../ElementOfTask/EditButton';
+import EditName from '../ElementOfTask/EditName';
 import './task.css';
 
-function Task({ task, editTask, deleteTask}) {
+function Task({ task, editTask, deleteTask, startEditing, cancelEditing}) {
     const handleDeleteClick = () => {
          deleteTask(task.id);
     };
 
     return (
         <div className='alignment-button'>
-            <EditTask task={task} editTask={editTask}/>
+            <EditName task={task} editTask={editTask} startEditing={startEditing} cancelEditing={cancelEditing}/>
             <DeleteButton onClick={handleDeleteClick} />
         </div>
     )

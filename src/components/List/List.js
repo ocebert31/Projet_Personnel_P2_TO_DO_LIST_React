@@ -16,6 +16,7 @@ function List() {
         const taskList = [...tasks, newTask];
         setTasks(taskList);
         localStorage.setItem('tasks', JSON.stringify(taskList));
+        console.log(newTask)
     };
 
     const deleteTask = (taskId) => {
@@ -27,7 +28,7 @@ function List() {
     const editTask = (taskId, newName) => {
         const updatedTasks = tasks.map(task => {
             if (task.id === taskId) {
-                return { ...task, name: newName }; // Mise à jour du nom de la tâche
+                return { ...task, name: newName, isEditing: false };
             }
             return task;
         });
@@ -35,13 +36,33 @@ function List() {
         localStorage.setItem('tasks', JSON.stringify(updatedTasks));
     };
 
+    const startEditing = (taskId) => {
+        const updatedTask = tasks.map(task => {
+            if (task.id === taskId) {
+                return { ...task, isEditing: true };
+            }
+            return  { ...task, isEditing: false };
+        });
+        setTasks(updatedTask);
+        localStorage.setItem('tasks', JSON.stringify(updatedTask));
+        
+    }
+
+    const cancelEditing = () => {
+        const updatedTask = tasks.map(task => {
+            return  { ...task, isEditing: false };
+        });
+        setTasks(updatedTask);
+        localStorage.setItem('tasks', JSON.stringify(updatedTask));
+    }
+
     return (
         <div>
             <h1>To Do List with React</h1>
             <Add addTask={addTask} />
             <ul>
                 {tasks.map(task => (
-                    <Task key={task.id} task={task} deleteTask={deleteTask} editTask={editTask} />
+                    <Task key={task.id} task={task} deleteTask={deleteTask} editTask={editTask} startEditing={startEditing} cancelEditing={cancelEditing} />
                 ))}
             </ul>
         </div>

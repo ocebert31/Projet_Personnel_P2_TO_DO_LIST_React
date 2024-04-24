@@ -10,7 +10,7 @@ function Add({ addTask }) {
     const handleChange = () => {
         const newName = name.trim();
         if (newName !== '') {
-            const newTask = { name: newName, id: generateUID() };
+            const newTask = { name: newName, id: generateUID(), isEditing: false };
             addTask(newTask);
             setName('');
         }
