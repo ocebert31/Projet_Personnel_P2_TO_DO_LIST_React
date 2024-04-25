@@ -56,13 +56,25 @@ function List() {
         localStorage.setItem('tasks', JSON.stringify(updatedTask));
     }
 
+    const checkedTask = (taskId) => {
+        const editedTask = tasks.map(task => {
+            if (task.id === taskId) {
+                return { ...task, isChecked: !task.isChecked };
+            }
+            return task;
+        });
+        setTasks(editedTask);
+        localStorage.setItem('tasks', JSON.stringify(editedTask));
+        
+    }
+
     return (
         <div>
             <h1>To Do List with React</h1>
             <Add addTask={addTask} />
             <ul>
                 {tasks.map(task => (
-                    <Task key={task.id} task={task} deleteTask={deleteTask} editTask={editTask} startEditing={startEditing} cancelEditing={cancelEditing} />
+                    <Task key={task.id} task={task} deleteTask={deleteTask} editTask={editTask} startEditing={startEditing} cancelEditing={cancelEditing} checkedTask={checkedTask}/>
                 ))}
             </ul>
         </div>
