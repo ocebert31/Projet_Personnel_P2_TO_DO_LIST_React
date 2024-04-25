@@ -17,7 +17,6 @@ function List() {
         const taskList = [...tasks, newTask];
         setTasks(taskList);
         localStorage.setItem('tasks', JSON.stringify(taskList));
-        console.log(newTask)
     };
 
     const deleteTask = (taskId) => {
@@ -46,7 +45,6 @@ function List() {
         });
         setTasks(updatedTask);
         localStorage.setItem('tasks', JSON.stringify(updatedTask));
-        
     }
 
     const cancelEditing = () => {
@@ -66,12 +64,33 @@ function List() {
         });
         setTasks(editedTask);
         localStorage.setItem('tasks', JSON.stringify(editedTask));
-        
     }
 
     const clearAllTasks = () => {
         setTasks([]);
         localStorage.removeItem('tasks');
+    };
+
+    // lorsque l'utilisateur commence à faire glisser un élément
+    const handleDragStart = (event, taskId) => {
+        event.dataTransfer.setData("taskId", taskId);
+    };
+
+    //lorsque l'élément est survolé pendant le glisser-déposer
+    const handleDragOver = (event) => {
+        event.preventDefault();
+    };
+
+    // l'utilisateur lâche l'élément 
+    const handleDrop = (event, droppedIndex) => {
+        event.preventDefault();
+        const draggedTaskId = event.dataTransfer.getData("taskId");
+        const draggedTaskIndex = tasks.findIndex(task => task.id === draggedTaskId);
+        const updatedTasks = [...tasks];
+        const [draggedTask] = updatedTasks.splice(draggedTaskIndex, 1);
+        updatedTasks.splice(droppedIndex, 0, draggedTask);
+        setTasks(updatedTasks);
+        localStorage.setItem('tasks', JSON.stringify(updatedTasks));
     };
 
     return (
@@ -81,8 +100,10 @@ function List() {
                 <Clear clearAllTasks={clearAllTasks}></Clear>
             </div>
             <ul className='style-liste'>
-                {tasks.map(task => (
-                    <Task key={task.id} task={task} deleteTask={deleteTask} editTask={editTask} startEditing={startEditing} cancelEditing={cancelEditing} checkedTask={checkedTask}/>
+                {tasks.map((task, index) => (
+                    <li key={task.id} draggable onDragStart={(event) => {handleDragStart(event, task.id)}} onDragOver={handleDragOver} onDrop={(event) => handleDrop(event, index)}>
+                        <Task task={task} deleteTask={deleteTask} editTask={editTask} startEditing={startEditing} cancelEditing={cancelEditing} checkedTask={checkedTask}/>
+                    </li>
                 ))}
             </ul>
             <Add addTask={addTask} />
