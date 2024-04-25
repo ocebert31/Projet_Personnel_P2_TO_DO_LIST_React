@@ -1,3 +1,14 @@
 .style-list {
     text-align: left;
 }
+
+.alignment-clear-title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+}
+
+.style-liste {
+    display: inline-block;
+}

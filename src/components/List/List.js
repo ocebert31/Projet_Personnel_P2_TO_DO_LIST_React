@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Add from '../Add/Add';
 import './List.css';
 import Task from '../Task/task';
+import Clear from '../Clear/Clear';
 
 function List() {
     const [tasks, setTasks] = useState([]);
@@ -68,15 +69,23 @@ function List() {
         
     }
 
+    const clearAllTasks = () => {
+        setTasks([]);
+        localStorage.removeItem('tasks');
+    };
+
     return (
         <div>
-            <h1>To Do List with React</h1>
-            <Add addTask={addTask} />
-            <ul>
+            <div className='alignment-clear-title'>
+                <h1>To Do List with React</h1>
+                <Clear clearAllTasks={clearAllTasks}></Clear>
+            </div>
+            <ul className='style-liste'>
                 {tasks.map(task => (
                     <Task key={task.id} task={task} deleteTask={deleteTask} editTask={editTask} startEditing={startEditing} cancelEditing={cancelEditing} checkedTask={checkedTask}/>
                 ))}
             </ul>
+            <Add addTask={addTask} />
         </div>
     );
 }
