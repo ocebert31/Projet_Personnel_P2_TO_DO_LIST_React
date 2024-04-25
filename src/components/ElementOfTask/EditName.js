@@ -21,11 +21,11 @@ function EditButton({ task, editTask, startEditing, cancelEditing, checkedTask }
 
   return (
     <div className='edit'>
+      <input type='checkbox' checked={isChecked} onChange={onClickChecked}></input>
       {task.isEditing ? (
         <input type="text" value={editedContent} onChange={handleChange} />
       ) : (
         <div>
-          <input type='checkbox' checked={isChecked} onChange={onClickChecked}></input>
           <label className={isChecked ? 'checked' : ''}>{task.name}</label>
         </div>
       )}

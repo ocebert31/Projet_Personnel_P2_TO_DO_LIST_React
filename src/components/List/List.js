@@ -101,7 +101,7 @@ function List() {
             </div>
             <ul className='style-liste'>
                 {tasks.map((task, index) => (
-                    <li key={task.id} draggable onDragStart={(event) => {handleDragStart(event, task.id)}} onDragOver={handleDragOver} onDrop={(event) => handleDrop(event, index)}>
+                    <li className='style-element' key={task.id} draggable onDragStart={(event) => {handleDragStart(event, task.id)}} onDragOver={handleDragOver} onDrop={(event) => handleDrop(event, index)}>
                         <Task task={task} deleteTask={deleteTask} editTask={editTask} startEditing={startEditing} cancelEditing={cancelEditing} checkedTask={checkedTask}/>
                     </li>
                 ))}
