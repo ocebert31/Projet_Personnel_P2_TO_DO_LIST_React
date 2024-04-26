@@ -96,7 +96,7 @@ function List() {
     return (
         <div>
             <div className='alignment-clear-title'>
-                <h1>To Do List with React</h1>
+                <h1 className="text-3xl font-bold underline">To Do List with React</h1>
                 <Clear clearAllTasks={clearAllTasks}></Clear>
             </div>
             <ul className='style-liste'>
