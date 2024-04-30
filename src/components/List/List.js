@@ -94,21 +94,26 @@ function List() {
     };
 
     return (
-        <div>
-            <div className='alignment-clear-title'>
-                <h1 className="text-3xl font-bold underline">To Do List with React</h1>
-                <Clear clearAllTasks={clearAllTasks}></Clear>
+        <div className="min-h-screen flex justify-center items-center bg-backgroundColor">
+            <div>
+                <h1 className="text-center mb-4">To Do List with React</h1>
+                <div className="w-full max-w-md bg-foregroundColor ">
+                    <div>
+                        <Clear clearAllTasks={clearAllTasks}></Clear>
+                    </div>
+                    <ul>
+                        {tasks.map((task, index) => (
+                            <li key={task.id} draggable onDragStart={(event) => {handleDragStart(event, task.id)}} onDragOver={handleDragOver} onDrop={(event) => handleDrop(event, index)}>
+                                <Task task={task} deleteTask={deleteTask} editTask={editTask} startEditing={startEditing} cancelEditing={cancelEditing} checkedTask={checkedTask}/>
+                            </li>
+                        ))}
+                    </ul>
+                    <Add addTask={addTask} />
+                </div>
             </div>
-            <ul className='style-liste'>
-                {tasks.map((task, index) => (
-                    <li className='style-element' key={task.id} draggable onDragStart={(event) => {handleDragStart(event, task.id)}} onDragOver={handleDragOver} onDrop={(event) => handleDrop(event, index)}>
-                        <Task task={task} deleteTask={deleteTask} editTask={editTask} startEditing={startEditing} cancelEditing={cancelEditing} checkedTask={checkedTask}/>
-                    </li>
-                ))}
-            </ul>
-            <Add addTask={addTask} />
         </div>
     );
+    
 }
 
 export default List;
