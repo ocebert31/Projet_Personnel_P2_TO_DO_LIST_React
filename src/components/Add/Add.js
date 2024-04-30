@@ -21,9 +21,11 @@ function Add({ addTask }) {
     };
 
     return (
-        <div>
-            <input value={name} onChange={saveName} />
-            <button onClick={handleChange}>Valider</button>
+        <div className="flex items-center mb-4">
+            <input className="border border-gray-300 rounded-l-lg px-4 py-2 mr-0 w-64" value={name} onChange={saveName} placeholder="Entrez une nouvelle tâche..."/>
+            <button onClick={handleChange} className="px-4 py-2 bg-inputButton text-white rounded-r-lg hover:bg-black">
+                Valider
+            </button>
         </div>
     );
 }
