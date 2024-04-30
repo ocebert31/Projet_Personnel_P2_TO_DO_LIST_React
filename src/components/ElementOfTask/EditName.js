@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import EditSaveButton from './EditSaveButton';
-import './EditName.css';
 
 function EditButton({ task, editTask, startEditing, cancelEditing, checkedTask }) {
   const [editedContent, setEditedContent] = useState(task.name);
@@ -20,13 +19,13 @@ function EditButton({ task, editTask, startEditing, cancelEditing, checkedTask }
   };
 
   return (
-    <div className='edit'>
-      <input type='checkbox' checked={isChecked} onChange={onClickChecked}></input>
+    <div className='flex'>
+      <input type='checkbox' className='mr-1' checked={isChecked} onChange={onClickChecked}></input>
       {task.isEditing ? (
-        <input type="text" value={editedContent} onChange={handleChange} />
+        <input type="text" value={editedContent} onChange={handleChange} className='bg-backgroundColor mr-2'/>
       ) : (
-        <div>
-          <label className={isChecked ? 'checked' : ''}>{task.name}</label>
+        <div className='mr-1'>
+          <label className={isChecked ? 'line-through' : ''} >{task.name}</label>
         </div>
       )}
       <EditSaveButton task={task} startEditing={startEditing} saveChange={saveChange} cancelEditing={cancelEditing} />

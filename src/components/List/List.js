@@ -95,7 +95,7 @@ function List() {
     return (
         <div className="min-h-screen flex justify-center items-center bg-backgroundColor">
             <div>
-                <h1 className="text-center mb-4 text-3xl">To Do List with React and Tailwind</h1>
+                <h1 className="text-center mb-4 text-3xl font-serif">To Do List with React and Tailwind</h1>
                 <div className="w-full max-w-md bg-foregroundColor p-6 rounded-lg">
                     <div>
                         <Clear clearAllTasks={clearAllTasks}></Clear>

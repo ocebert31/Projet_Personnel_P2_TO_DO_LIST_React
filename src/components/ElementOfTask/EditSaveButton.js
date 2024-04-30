@@ -22,15 +22,15 @@ function EditSaveButton({ task, startEditing, saveChange, cancelEditing }) {
         <div>
             {task.isEditing ? 
                 <div>
-                    <button onClick={onClickCheck}>
+                    <button onClick={onClickCheck} className='mr-2 text-green-700 hover:text-green-900'>
                         <FontAwesomeIcon icon={faCheck} />
                     </button>
-                    <button onClick={onClickCancel}>
+                    <button onClick={onClickCancel} className='mr-2 text-red-700 hover:text-red-900'>
                         <FontAwesomeIcon icon={faXmark} />
                     </button>
                 </div>
                 :
-                <button onClick={onClickEdit}>
+                <button onClick={onClickEdit} className='mr-2 text-blue-700 hover:text-blue-900'>
                     <FontAwesomeIcon icon={faPen} />
                 </button>
             }

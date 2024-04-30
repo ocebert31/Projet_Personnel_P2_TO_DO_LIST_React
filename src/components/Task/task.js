@@ -1,7 +1,6 @@
 import React from 'react';
 import DeleteButton from '../ElementOfTask/DeleteButton';
 import EditName from '../ElementOfTask/EditName';
-import './task.css';
 
 function Task({ task, editTask, deleteTask, startEditing, cancelEditing, checkedTask}) {
     const handleDeleteClick = () => {
@@ -9,7 +8,7 @@ function Task({ task, editTask, deleteTask, startEditing, cancelEditing, checked
     };
 
     return (
-        <div className='alignment-button'>
+        <div className='flex'>
             <EditName task={task} editTask={editTask} startEditing={startEditing} cancelEditing={cancelEditing} checkedTask={checkedTask}/>
             <DeleteButton onClick={handleDeleteClick} />
         </div>

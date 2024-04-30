@@ -4,7 +4,9 @@ import { faTrash } from '@fortawesome/free-solid-svg-icons';
 
 function DeleteButton({ onClick }) {
     return (
-        <button onClick={onClick}><FontAwesomeIcon icon={faTrash} /></button>
+        <button onClick={onClick} className="text-red-700 hover:text-red-900">
+            <FontAwesomeIcon icon={faTrash} />
+        </button>
     );
 }
 
