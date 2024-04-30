@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import Add from '../Add/Add';
-import './List.css';
 import Task from '../Task/task';
 import Clear from '../Clear/Clear';
 
@@ -96,8 +95,8 @@ function List() {
     return (
         <div className="min-h-screen flex justify-center items-center bg-backgroundColor">
             <div>
-                <h1 className="text-center mb-4">To Do List with React</h1>
-                <div className="w-full max-w-md bg-foregroundColor ">
+                <h1 className="text-center mb-4 text-3xl">To Do List with React and Tailwind</h1>
+                <div className="w-full max-w-md bg-foregroundColor p-6 rounded-lg">
                     <div>
                         <Clear clearAllTasks={clearAllTasks}></Clear>
                     </div>
