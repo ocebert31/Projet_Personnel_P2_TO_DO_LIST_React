@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faRotateRight } from '@fortawesome/free-solid-svg-icons';
-import './Clear.css';
 
 function Clear({ clearAllTasks }) {
     const [showModal, setShowModal] = useState(false);
@@ -22,17 +21,17 @@ function Clear({ clearAllTasks }) {
     return (
         <div>
             <button onClick={handleClearTasks}>
-                <FontAwesomeIcon icon={faRotateRight} />
+                <FontAwesomeIcon icon={faRotateRight} className='mr-2'/>
                 Tout supprimer
             </button>
             {showModal && (
-                <div className="modal-overlay">
-                    <div className="modal">
-                        <h2>Confirmation</h2>
-                        <p>Êtes-vous sûr de vouloir supprimer toutes les tâches ?</p>
-                        <div>
-                            <button onClick={confirmClearTasks}>Oui</button>
-                            <button onClick={closeModal}>Non</button>
+                <div className="fixed top-0 left-0 w-full h-full flex items-center justify-center bg-gray-800 bg-opacity-75">
+                    <div className="bg-white p-8 rounded shadow-lg">
+                        <h2 className="text-xl font-semibold mb-4">Confirmation</h2>
+                        <p className="mb-4">Êtes-vous sûr de vouloir supprimer toutes les tâches ?</p>
+                        <div className="flex justify-between">
+                            <button onClick={confirmClearTasks} className="px-4 py-2 bg-green-700 text-white rounded hover:bg-green-900">Oui</button>
+                            <button onClick={closeModal} className="px-4 py-2 bg-red-700 text-white rounded hover:bg-red-900">Non</button>
                         </div>
                     </div>
                 </div>
