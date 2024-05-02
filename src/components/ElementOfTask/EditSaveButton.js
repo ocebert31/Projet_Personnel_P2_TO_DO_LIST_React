@@ -30,7 +30,8 @@ function EditSaveButton({ task, startEditing, saveChange, cancelEditing }) {
                     </button>
                 </div>
                 :
-                <button onClick={onClickEdit} className='mr-2 text-blue-700 hover:text-blue-900'>
+                // on ne peut pas changer la couleur au hover et mettre un opacity
+                <button onClick={onClickEdit} className='mr-2 text-blue-700 opacity-0 hover:opacity-100'>
                     <FontAwesomeIcon icon={faPen} />
                 </button>
             }
