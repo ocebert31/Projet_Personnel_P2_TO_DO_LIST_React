@@ -10,7 +10,7 @@ function Task({ task, editTask, deleteTask, startEditing, cancelEditing, checked
     return (
         <div className='flex'>
             <EditName task={task} editTask={editTask} startEditing={startEditing} cancelEditing={cancelEditing} checkedTask={checkedTask}/>
-            <DeleteButton onClick={handleDeleteClick}/>
+            <DeleteButton task={task} cancelEditing={cancelEditing} onClick={handleDeleteClick}/>
         </div>
     )
  }
