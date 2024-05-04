@@ -1,4 +1,3 @@
-import React from 'react';
 import DeleteButton from '../ElementOfTask/DeleteButton';
 import EditName from '../ElementOfTask/EditName';
 
@@ -10,10 +9,9 @@ function Task({ task, editTask, deleteTask, startEditing, cancelEditing, checked
     return (
         <div className='flex'>
             <EditName task={task} editTask={editTask} startEditing={startEditing} cancelEditing={cancelEditing} checkedTask={checkedTask}/>
-            <DeleteButton task={task} cancelEditing={cancelEditing} onClick={handleDeleteClick}/>
+            <DeleteButton task={task} onClick={handleDeleteClick}/>
         </div>
     )
  }
 
-export default Task;
-
+export default Task

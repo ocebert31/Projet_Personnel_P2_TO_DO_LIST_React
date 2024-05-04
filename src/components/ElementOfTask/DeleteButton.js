@@ -2,39 +2,22 @@ import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
 
-function DeleteButton({ onClick, isEditing }) {
+function DeleteButton({ task, onClick }) {
+    // Vérifier si l'élément est en cours d'édition
+    const isEditing = task.isEditing || false;
+
+    // Gérer le clic uniquement si l'élément n'est pas en cours d'édition
+    const handleClick = () => {
+        if (!isEditing) {
+            onClick();
+        }
+    };
+
     return (
-        <button onClick={onClick} className={isEditing ? '': 'text-red-700 opacity-0 hover:opacity-100'}>
+        <button onClick={handleClick} className={`text-red-700 ${!isEditing ? 'opacity-0 hover:opacity-100' : ''}`}  disabled={isEditing}>
             <FontAwesomeIcon icon={faTrash} />
         </button>
     );
 }
 
 export default DeleteButton;
-
-// className="text-red-700 hover:text-red-900"
-
-
-
-
-// import React from 'react';
-// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-// import { faTrash } from '@fortawesome/free-solid-svg-icons';
-// import { useState } from 'react';
-
-// function DeleteButton({ onClick, task, cancelEditing }) {
-//     const [isEditing, setIsEditing] = useState(task.isEditing);
-
-//     const onClickEditing = () => {
-//         setIsEditing(!isEditing);
-//         cancelEditing(task.id);
-//     };
-
-//     return (
-//         <button onClick={onClick} isEditing={isEditing} className={isEditing ? 'text-red-300' : 'text-blue-300'} onChange={onClickEditing}>
-//             <FontAwesomeIcon icon={faTrash} />
-//         </button>
-//     );
-// }
-
-// export default DeleteButton;

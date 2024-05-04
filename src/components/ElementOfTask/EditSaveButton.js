@@ -40,4 +40,3 @@ function EditSaveButton({ task, startEditing, saveChange, cancelEditing }) {
 }
 
 export default EditSaveButton;
-
