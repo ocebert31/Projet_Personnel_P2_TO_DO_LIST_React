@@ -94,9 +94,9 @@ function List() {
 
     return (
         <div className="min-h-screen flex justify-center items-center bg-backgroundColor">
-            <div>
+            <div className="w-full max-w-[500px]">
                 <h1 className="text-center mb-4 text-3xl font-serif">To Do List with React and Tailwind</h1>
-                <div className="w-full max-w-md bg-foregroundColor p-6 rounded-lg">
+                <div className="w-full bg-foregroundColor p-6 rounded-xl overflow-y-scroll max-h-[900px]">
                     <div>
                         <Clear clearAllTasks={clearAllTasks}></Clear>
                     </div>
@@ -111,8 +111,7 @@ function List() {
                 </div>
             </div>
         </div>
-    );
-    
+    );   
 }
 
 export default List;

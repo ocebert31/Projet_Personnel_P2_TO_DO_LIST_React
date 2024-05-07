@@ -25,7 +25,7 @@ function EditButton({ task, editTask, startEditing, cancelEditing, checkedTask }
         <input type="text" value={editedContent} onChange={handleChange} className='bg-backgroundColor mr-2'/>
       ) : (
         <div className='mr-1'>
-          <label className={isChecked ? 'line-through' : ''} >{task.name}</label>
+          <label className={`break-all ${isChecked ? 'line-through' : ''}`}>{task.name}</label>
         </div>
       )}
       <EditSaveButton task={task} startEditing={startEditing} saveChange={saveChange} cancelEditing={cancelEditing} />
