@@ -1,10 +1,10 @@
 import './App.css';
-import List from './components/List/List';
+import ListTabs from './components/ListTabs/ListTabs';
 
 function App() {
   return (
     <div className="App">
-      <List></List>
+      <ListTabs></ListTabs>
     </div>
   );
 }
