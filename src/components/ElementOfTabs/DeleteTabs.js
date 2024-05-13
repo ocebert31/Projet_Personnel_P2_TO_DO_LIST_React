@@ -1,11 +1,11 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTrash } from '@fortawesome/free-solid-svg-icons';
+import { faXmark } from '@fortawesome/free-solid-svg-icons';
 
-function DeleteTabs({onClick}) {
+function DeleteTabs({onClick, tabId}) {
     return (
-        <button onClick={onClick}>
-            <FontAwesomeIcon icon={faTrash} />
+        <button onClick={() => onClick(tabId)} className="ml-2">
+            <FontAwesomeIcon icon={faXmark} />
         </button>
     )
 }

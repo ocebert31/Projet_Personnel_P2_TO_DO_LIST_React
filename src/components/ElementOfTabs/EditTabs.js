@@ -23,7 +23,7 @@ function EditTabs({ tab, editTab, startEditing, cancelEditing }) {
         <input type="text" value={editedContent} onChange={handleChange} className='bg-backgroundColor mr-2'/>
       ) : (
         <div className='mr-1'>
-          <label className='break-all'>{tab.name}</label>
+          <h2 className='break-all text-2xl font-medium'>{tab.name}</h2>
         </div>
       )}
       <EditSaveButtonOfTab tab={tab} startEditing={startEditing} saveChange={saveChange} cancelEditing={cancelEditing} />

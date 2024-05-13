@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import Tabs from '../Tabs/Tabs';
+import DeleteTabs from '../ElementOfTabs/DeleteTabs';
+import EditTabs from '../ElementOfTabs/EditTabs';
 
 function ListTabs() {
-    const [tabs, setTabs] = useState([{ id: 1, name: 'List 1' }]);
+    const [tabs, setTabs] = useState([{ id: 1, name: 'List 1', isActive: true }]);
 
     useEffect(() => {
         const savedTabsList = localStorage.getItem('tabs');
@@ -55,25 +56,37 @@ function ListTabs() {
         localStorage.setItem('tabs', JSON.stringify(updatedTab));
     }
 
-    const checkedTask = (tabId) => {
-        const editedTab = tabs.map(tab => {
+    const changeActiveTab = (tabId) => {
+        const updatedTabs = tabs.map(tab => {
             if (tab.id === tabId) {
-                return { ...tab, isChecked: !tab.isChecked };
+                return { ...tab, isActive: true};
             }
-            return tab;
-        });
-        setTabs(editedTab);
-        localStorage.setItem('tabs', JSON.stringify(editedTab));
+            return { ...tab, isActive: false};
+        })
+        setTabs(updatedTabs);
+        localStorage.setItem('tabs', JSON.stringify(updatedTabs));
     }
 
     return (
-        <div className="flex space-x-4">
+        <div>
+            <div className="flex space-x-4 justify-center">
             {tabs.map((tab, index) => (
-                <li key={index} className='list-none'>
-                    <Tabs tab={tab} deleteTabs={deleteTabs} editTab={editTab} startEditing={startEditing} cancelEditing={cancelEditing} checkedTask={checkedTask}></Tabs>
-                </li>  
+                <div key={index} className="flex items-center">
+                    <button className={`${tab.isActive ? 'underline' : ''}`} onClick={() => changeActiveTab(tab.id)}>
+                        {tab.name}
+                    </button>  
+                    <DeleteTabs onClick={deleteTabs} tabId={tab.id} />
+                </div>
             ))}
             <button onClick={addTabs} className="border border-gray-300 px-4 py-2 rounded">+</button>
+            </div>
+            <div>
+                {tabs.map((tab) => (
+                    <div className={`${tab.isActive ? '' : 'hidden'}`}>
+                        <EditTabs tab={tab} editTab={editTab} startEditing={startEditing} cancelEditing={cancelEditing}></EditTabs>
+                    </div>
+                ))}
+            </div>
         </div>
     );
 }
