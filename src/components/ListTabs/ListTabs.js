@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import DeleteTabs from '../ElementOfTabs/DeleteTabs';
 import EditTabs from '../ElementOfTabs/EditTabs';
+import List from '../List/List';
 
 function ListTabs() {
-    const [tabs, setTabs] = useState([{ id: 1, name: 'List 1', isActive: true }]);
+    const [tabs, setTabs] = useState([{ id: 1, name: 'List 1', isActive: true, tasks: [] }]);
 
     useEffect(() => {
         const savedTabsList = localStorage.getItem('tabs');
@@ -14,7 +15,7 @@ function ListTabs() {
     const addTabs = () => {
         const maxId = tabs.reduce((max, tab) => (tab.id > max ? tab.id : max), 0);
         const newTabName = `List ${maxId + 1}`;
-        const newTab = { id: maxId + 1, name: newTabName };
+        const newTab = { id: maxId + 1, name: newTabName, isActive: false, tasks: [] };
         const tabsList = [...tabs, newTab];
         setTabs(tabsList);
         localStorage.setItem('tabs', JSON.stringify(tabsList));
@@ -67,6 +68,17 @@ function ListTabs() {
         localStorage.setItem('tabs', JSON.stringify(updatedTabs));
     }
 
+    const updateTabs = (updatedTab) => {
+        const updatedTabs = tabs.map(tab => {
+            if (tab.id === updatedTab.id) {
+                return updatedTab;
+            }
+            return tab;
+        })
+        setTabs(updatedTabs);
+        localStorage.setItem('tabs', JSON.stringify(updatedTabs));
+    }
+
     return (
         <div>
             <div className="flex space-x-4 justify-center">
@@ -84,6 +96,7 @@ function ListTabs() {
                 {tabs.map((tab) => (
                     <div className={`${tab.isActive ? '' : 'hidden'}`}>
                         <EditTabs tab={tab} editTab={editTab} startEditing={startEditing} cancelEditing={cancelEditing}></EditTabs>
+                        <List tab={tab} updateTabs={updateTabs} ></List>
                     </div>
                 ))}
             </div>
@@ -92,3 +105,10 @@ function ListTabs() {
 }
 
 export default ListTabs;
+
+
+
+
+
+
+

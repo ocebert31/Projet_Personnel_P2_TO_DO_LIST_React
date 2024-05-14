@@ -3,7 +3,7 @@ import ListTabs from './components/ListTabs/ListTabs';
 
 function App() {
   return (
-    <div className="App">
+    <div className="App bg-backgroundColor">
       <ListTabs></ListTabs>
     </div>
   );
