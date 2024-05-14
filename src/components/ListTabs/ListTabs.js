@@ -5,12 +5,27 @@ import List from '../List/List';
 
 function ListTabs() {
     const [tabs, setTabs] = useState([{ id: 1, name: 'List 1', isActive: true, tasks: [] }]);
-
     useEffect(() => {
         const savedTabsList = localStorage.getItem('tabs');
         if (savedTabsList)
             setTabs(JSON.parse(savedTabsList));
     }, []);
+
+    useEffect(() => {
+        if (tabs.length === 1) {
+            const firstTab = tabs[0];
+            if (firstTab.isActive === false) {
+                const updatedTabs = tabs.map(tab => {
+                    if (tab.id === firstTab.id) {
+                        return { ...tab, isActive: true};
+                    }
+                    return { ...tab, isActive: false};
+                });
+                setTabs(updatedTabs);
+                localStorage.setItem('tabs', JSON.stringify(updatedTabs));
+            }
+        }
+    }, [tabs]);
 
     const addTabs = () => {
         const maxId = tabs.reduce((max, tab) => (tab.id > max ? tab.id : max), 0);
@@ -21,8 +36,15 @@ function ListTabs() {
         localStorage.setItem('tabs', JSON.stringify(tabsList));
     }    
 
-    const deleteTabs = (tabId) => {
+     const deleteTabs = (tabId) => {
         const updatedTabs = tabs.filter(tab => tab.id !== tabId);
+        if (updatedTabs.length > 0) {
+            const activeTabIndex = tabs.findIndex(tab => tab.id === tabId);
+            if (tabs[activeTabIndex].isActive) {
+                const nextActiveTabIndex = activeTabIndex === updatedTabs.length ? updatedTabs.length - 1 : activeTabIndex;
+                updatedTabs[nextActiveTabIndex].isActive = true;
+            }
+        }
         setTabs(updatedTabs);
         localStorage.setItem('tabs', JSON.stringify(updatedTabs));
     }
@@ -81,24 +103,26 @@ function ListTabs() {
 
     return (
         <div>
-            <div className="flex space-x-4 justify-center">
-            {tabs.map((tab, index) => (
-                <div key={index} className="flex items-center">
-                    <button className={`${tab.isActive ? 'underline' : ''}`} onClick={() => changeActiveTab(tab.id)}>
-                        {tab.name}
-                    </button>  
-                    <DeleteTabs onClick={deleteTabs} tabId={tab.id} />
+            <div>     
+                <div className="flex space-x-4 justify-center">
+                    {tabs.map((tab, index) => (
+                        <div key={index} className="flex items-center">
+                            <button className={`${tab.isActive ? 'underline' : ''}`} onClick={() => changeActiveTab(tab.id)}>
+                                {tab.name}
+                            </button>  
+                            <DeleteTabs onClick={deleteTabs} tabId={tab.id} tabs={tabs}/>
+                        </div>
+                    ))}
+                    <button onClick={addTabs} className="border border-gray-300 px-4 py-2 rounded">+</button>
                 </div>
-            ))}
-            <button onClick={addTabs} className="border border-gray-300 px-4 py-2 rounded">+</button>
-            </div>
-            <div>
-                {tabs.map((tab) => (
-                    <div className={`${tab.isActive ? '' : 'hidden'}`}>
-                        <EditTabs tab={tab} editTab={editTab} startEditing={startEditing} cancelEditing={cancelEditing}></EditTabs>
-                        <List tab={tab} updateTabs={updateTabs} ></List>
-                    </div>
-                ))}
+                <div>
+                    {tabs.map((tab) => (
+                        <div className={`${tab.isActive ? '' : 'hidden'}`}>
+                            <EditTabs tab={tab} editTab={editTab} startEditing={startEditing} cancelEditing={cancelEditing}></EditTabs>
+                            <List tab={tab} updateTabs={updateTabs} ></List>
+                        </div>
+                    ))}
+                </div>
             </div>
         </div>
     );

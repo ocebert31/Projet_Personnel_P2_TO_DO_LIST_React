@@ -70,10 +70,9 @@ function List({ tab, updateTabs }) {
     };
 
     return (
-        <div className="min-h-screen flex justify-center items-center p-6">
+        <div className=" flex justify-center items-center p-6">
             <div className="w-full max-w-[500px]">
-                <h1 className="text-center mb-4 text-3xl font-serif">To Do List with React and Tailwind</h1>
-                <div className="w-full bg-foregroundColor p-6 rounded-xl overflow-y-scroll max-h-[600px]">
+                <div className="w-full bg-foregroundColor p-6 rounded-xl overflow-y-scroll max-h-[900px]">
                     <div>
                         <Clear clearAllTasks={clearAllTasks} />
                     </div>
