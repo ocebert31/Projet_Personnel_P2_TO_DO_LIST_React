@@ -3,8 +3,9 @@ import React, { useState, useEffect } from 'react';
 import Add from '../Add/Add';
 import Task from '../Task/task';
 import Clear from '../Clear/Clear';
+import EditTab from '../ElementOfTabs/EditTab';
 
-function List({ tab, updateTabs }) {
+function List({ tab, updateTabs, setTabs, tabs }) {
     const [tasks, setTasks] = useState(tab.tasks);
 
     useEffect(() => {
@@ -73,6 +74,7 @@ function List({ tab, updateTabs }) {
         <div className=" flex justify-center items-center p-6">
             <div className="w-full max-w-[500px]">
                 <div className="w-full bg-foregroundColor p-6 rounded-xl overflow-y-scroll max-h-[900px]">
+                <EditTab tab={tab} updateTabs={updateTabs}></EditTab>
                     <div>
                         <Clear clearAllTasks={clearAllTasks} />
                     </div>

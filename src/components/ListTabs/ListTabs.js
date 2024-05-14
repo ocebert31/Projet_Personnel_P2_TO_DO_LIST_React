@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import DeleteTabs from '../ElementOfTabs/DeleteTabs';
-import EditTabs from '../ElementOfTabs/EditTabs';
 import List from '../List/List';
 
 function ListTabs() {
     const [tabs, setTabs] = useState([{ id: 1, name: 'List 1', isActive: true, tasks: [] }]);
+
     useEffect(() => {
         const savedTabsList = localStorage.getItem('tabs');
         if (savedTabsList)
@@ -49,36 +49,6 @@ function ListTabs() {
         localStorage.setItem('tabs', JSON.stringify(updatedTabs));
     }
 
-    const editTab = (tabId, newName) => {
-        const updatedTabs = tabs.map(tab => {
-            if (tab.id === tabId) {
-                return { ...tab, name: newName, isEditing: false };
-            }
-            return tab;
-        });
-        setTabs(updatedTabs);
-        localStorage.setItem('tabs', JSON.stringify(updatedTabs));
-    };
-
-    const startEditing = (tabId) => {
-        const updatedTab = tabs.map(tab => {
-            if (tab.id === tabId) {
-                return { ...tab, isEditing: true };
-            }
-            return  { ...tab, isEditing: false };
-        });
-        setTabs(updatedTab);
-        localStorage.setItem('tabs', JSON.stringify(updatedTab));
-    }
-
-    const cancelEditing = () => {
-        const updatedTab = tabs.map(tab => {
-            return  { ...tab, isEditing: false };
-        });
-        setTabs(updatedTab);
-        localStorage.setItem('tabs', JSON.stringify(updatedTab));
-    }
-
     const changeActiveTab = (tabId) => {
         const updatedTabs = tabs.map(tab => {
             if (tab.id === tabId) {
@@ -118,8 +88,7 @@ function ListTabs() {
                 <div>
                     {tabs.map((tab) => (
                         <div className={`${tab.isActive ? '' : 'hidden'}`}>
-                            <EditTabs tab={tab} editTab={editTab} startEditing={startEditing} cancelEditing={cancelEditing}></EditTabs>
-                            <List tab={tab} updateTabs={updateTabs} ></List>
+                            <List tab={tab} updateTabs={updateTabs} setTabs={setTabs} tabs={tabs}></List>
                         </div>
                     ))}
                 </div>
