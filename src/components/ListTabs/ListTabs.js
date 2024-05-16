@@ -72,26 +72,24 @@ function ListTabs() {
     }
 
     return (
-        <div>
-            <div>     
-                <div className="flex space-x-4 justify-center">
-                    {tabs.map((tab, index) => (
-                        <div key={index} className="flex items-center">
-                            <button className={`${tab.isActive ? 'underline' : ''}`} onClick={() => changeActiveTab(tab.id)}>
-                                {tab.name}
-                            </button>  
-                            <DeleteTabs onClick={deleteTabs} tabId={tab.id} tabs={tabs}/>
-                        </div>
-                    ))}
-                    <button onClick={addTabs} className="border border-gray-300 px-4 py-2 rounded">+</button>
-                </div>
-                <div>
-                    {tabs.map((tab) => (
-                        <div className={`${tab.isActive ? '' : 'hidden'}`}>
-                            <List tab={tab} updateTabs={updateTabs} setTabs={setTabs} tabs={tabs}></List>
-                        </div>
-                    ))}
-                </div>
+        <div className='min-h-screen'>     
+            <div className="flex space-x-4 justify-center">
+                {tabs.map((tab, index) => (
+                    <div key={index} className="flex items-center">
+                        <button className={` ${tab.isActive ? 'underline' : ''}`} onClick={() => changeActiveTab(tab.id)}>
+                            {tab.name}
+                        </button>  
+                        <DeleteTabs onClick={deleteTabs} tabId={tab.id} tabs={tabs}/>
+                    </div>
+                ))}
+                <button onClick={addTabs} className="border border-gray-300 px-4 py-2 rounded">+</button>
+            </div>
+            <div>
+                {tabs.map((tab) => (
+                    <div className={`${tab.isActive ? '' : 'hidden'}`}>
+                        <List tab={tab} updateTabs={updateTabs} setTabs={setTabs} tabs={tabs}></List>
+                    </div>
+                ))}
             </div>
         </div>
     );

@@ -4,7 +4,7 @@ import { faXmark } from '@fortawesome/free-solid-svg-icons';
 
 function DeleteTabs({onClick, tabId, tabs}) {
     return (
-        <button onClick={() => onClick(tabId)}  className={`ml-2 ${tabs.length === 1 ? 'hidden' : ''}`}>
+        <button onClick={() => onClick(tabId)}  className={`ml-2 opacity-0 hover:opacity-100 ${tabs.length === 1 ? 'hidden' : ''}`}>
             <FontAwesomeIcon icon={faXmark} />
         </button>
     )
