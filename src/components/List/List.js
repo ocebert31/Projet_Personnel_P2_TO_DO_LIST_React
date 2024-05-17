@@ -5,7 +5,7 @@ import Task from '../Task/task';
 import Clear from '../Clear/Clear';
 import EditTab from '../ElementOfTabs/EditTab';
 
-function List({ tab, updateTabs, setTabs, tabs }) {
+function List({ tab, updateTabs}) {
     const [tasks, setTasks] = useState(tab.tasks);
 
     useEffect(() => {
@@ -45,6 +45,10 @@ function List({ tab, updateTabs, setTabs, tabs }) {
         const updatedTasks = tasks.map(task => (task.id === taskId ? { ...task, isChecked: !task.isChecked } : task));
         updateTabTasks(updatedTasks);
     };
+
+    const checkedCount = () => {
+        return tasks.filter(task => task.isChecked).length
+    }
 
     const updateTabTasks = (updatedTasks) => {
         const updatedTab = { ...tab, tasks: updatedTasks };
@@ -86,10 +90,11 @@ function List({ tab, updateTabs, setTabs, tabs }) {
                         ))}
                     </ul>
                     <Add addTask={addTask} />
+                    <p>{checkedCount()}</p>
                 </div>
             </div>
         </div>
     );
 }
 
-export default List;
+export default List; 

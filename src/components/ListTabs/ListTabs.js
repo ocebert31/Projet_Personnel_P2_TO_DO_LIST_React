@@ -30,7 +30,7 @@ function ListTabs() {
     const addTabs = () => {
         const maxId = tabs.reduce((max, tab) => (tab.id > max ? tab.id : max), 0);
         const newTabName = `List ${maxId + 1}`;
-        const newTab = { id: maxId + 1, name: newTabName, isActive: false, tasks: [] };
+        const newTab = { id: maxId + 1, name: newTabName, isActive: false, tasks: [], counterChecked: 0};
         const tabsList = [...tabs, newTab];
         setTabs(tabsList);
         localStorage.setItem('tabs', JSON.stringify(tabsList));
@@ -85,9 +85,9 @@ function ListTabs() {
                 <button onClick={addTabs} className="border border-gray-300 px-4 py-2 rounded">+</button>
             </div>
             <div>
-                {tabs.map((tab) => (
+                {tabs.map((tab, counterChecked) => (
                     <div className={`${tab.isActive ? '' : 'hidden'}`}>
-                        <List tab={tab} updateTabs={updateTabs} setTabs={setTabs} tabs={tabs}></List>
+                        <List tab={tab} updateTabs={updateTabs} setTabs={setTabs} tabs={tabs} counterChecked={counterChecked}></List>
                     </div>
                 ))}
             </div>
