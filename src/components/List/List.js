@@ -4,6 +4,7 @@ import Add from '../Add/Add';
 import Task from '../Task/task';
 import Clear from '../Clear/Clear';
 import EditTab from '../ElementOfTabs/EditTab';
+import './List.css';
 
 function List({ tab, updateTabs}) {
     const [tasks, setTasks] = useState(tab.tasks);
@@ -77,7 +78,7 @@ function List({ tab, updateTabs}) {
     return (
         <div className=" flex justify-center items-center p-6">
             <div className="w-full max-w-[500px]">
-                <div className="w-full bg-foregroundColor p-6 rounded-xl overflow-y-scroll max-h-[900px]">
+                <div className={`w-full bg-foregroundColor p-6 rounded-xl overflow-y-scroll max-h-[900px] ${checkedCount() > 4 ? 'glowing-effect' : ''}`}>
                 <EditTab tab={tab} updateTabs={updateTabs}></EditTab>
                     <div>
                         <Clear clearAllTasks={clearAllTasks} />
@@ -89,10 +90,13 @@ function List({ tab, updateTabs}) {
                             </li>
                         ))}
                     </ul>
+                    <p className={`text-center ${checkedCount() === 0 ? 'hidden' : ''}`}>Vous avez terminé {checkedCount()} tâches</p>
                     <Add addTask={addTask} />
-                    <p>{checkedCount()}</p>
                 </div>
             </div>
+            <div class={` ${checkedCount() > 4 ? 'firework' : ''}`}></div>
+            <div class={` ${checkedCount() > 4 ? 'firework' : ''}`}></div>
+            <div class={` ${checkedCount() > 4 ? 'firework' : ''}`}></div>
         </div>
     );
 }

@@ -3,7 +3,7 @@ import DeleteTabs from '../ElementOfTabs/DeleteTabs';
 import List from '../List/List';
 
 function ListTabs() {
-    const [tabs, setTabs] = useState([{ id: 1, name: 'List 1', isActive: true, tasks: [] }]);
+    const [tabs, setTabs] = useState([{ id: 1, name: 'Liste 1', isActive: true, tasks: [] }]);
 
     useEffect(() => {
         const savedTabsList = localStorage.getItem('tabs');
@@ -29,7 +29,7 @@ function ListTabs() {
 
     const addTabs = () => {
         const maxId = tabs.reduce((max, tab) => (tab.id > max ? tab.id : max), 0);
-        const newTabName = `List ${maxId + 1}`;
+        const newTabName = `Liste ${maxId + 1}`;
         const newTab = { id: maxId + 1, name: newTabName, isActive: false, tasks: [], counterChecked: 0};
         const tabsList = [...tabs, newTab];
         setTabs(tabsList);
@@ -76,13 +76,13 @@ function ListTabs() {
             <div className="flex space-x-4 justify-center">
                 {tabs.map((tab, index) => (
                     <div key={index} className="flex items-center">
-                        <button className={` ${tab.isActive ? 'underline' : ''}`} onClick={() => changeActiveTab(tab.id)}>
+                        <button className={`text-white ${tab.isActive ? 'underline' : ''}`} onClick={() => changeActiveTab(tab.id)}>
                             {tab.name}
                         </button>  
                         <DeleteTabs onClick={deleteTabs} tabId={tab.id} tabs={tabs}/>
                     </div>
                 ))}
-                <button onClick={addTabs} className="border border-gray-300 px-4 py-2 rounded">+</button>
+                <button onClick={addTabs} className="border border-gray-300 px-4 py-2 rounded text-white">+</button>
             </div>
             <div>
                 {tabs.map((tab, counterChecked) => (

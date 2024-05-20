@@ -4,8 +4,8 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        backgroundColor: '#E7E7E7',
-        foregroundColor: '#D1D1D1',
+        backgroundColor: '#D1D1D1',
+        foregroundColor: '#E7E7E7',
         inputButton: '#545454',
       },
     },
