@@ -97,9 +97,6 @@ function List({ tab, updateTabs}) {
                     <Add addTask={addTask} />
                 </div>
             </div>
-            <div class={` ${checkedCount() > 4 ? 'firework' : ''}`}></div>
-            <div class={` ${checkedCount() > 4 ? 'firework' : ''}`}></div>
-            <div class={` ${checkedCount() > 4 ? 'firework' : ''}`}></div>
         </div>
     );
 }
