@@ -1,0 +1,11 @@
+{
+    "Title": "To do List created with React and Tailwind by Bertrand Océane",
+    "DeleteButton": "Delete all",
+    "ConfirmButton": "Yes",
+    "ConfirmCancel": "No", 
+    "ConfirmQuestion": "Are you sure you want to delete all tasks?",
+    "TitleConfirm": "Confirmation",
+    "AddTask": "Add",
+    "ExampleAddition": "Enter a new task...",
+    "SentenceOfNumberChecked": "You have completed {{count}} tasks !"
+}

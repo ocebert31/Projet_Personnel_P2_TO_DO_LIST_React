@@ -1,0 +1,11 @@
+{
+    "Title": "Liste de tâches créait avec React et Tailwind par Bertrand Océane",
+    "DeleteButton": "Tout supprimer",
+    "ConfirmButton": "Oui",
+    "ConfirmCancel": "Non",
+    "ConfirmQuestion": "Êtes-vous sûr de vouloir supprimer toutes les tâches ?",
+    "TitleConfirm": "Confirmation",
+    "AddTask": "Ajouter",
+    "ExampleAddition": "Entrez une nouvelle tâche...",
+    "SentenceOfNumberChecked": "Vous avez terminé {{count}} tâches !"
+} 

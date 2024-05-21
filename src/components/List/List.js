@@ -5,6 +5,7 @@ import Task from '../Task/task';
 import Clear from '../Clear/Clear';
 import EditTab from '../ElementOfTabs/EditTab';
 import './List.css';
+import { useTranslation } from 'react-i18next';
 
 function List({ tab, updateTabs}) {
     const [tasks, setTasks] = useState(tab.tasks);
@@ -75,6 +76,8 @@ function List({ tab, updateTabs}) {
         updateTabTasks(updatedTasks);
     };
 
+    const { t } = useTranslation();
+
     return (
         <div className=" flex justify-center items-center p-6">
             <div className="w-full max-w-[500px]">
@@ -90,7 +93,7 @@ function List({ tab, updateTabs}) {
                             </li>
                         ))}
                     </ul>
-                    <p className={`text-center ${checkedCount() === 0 ? 'hidden' : ''}`}>Vous avez terminé {checkedCount()} tâches</p>
+                    <p className={`text-center ${checkedCount() === 0 ? 'hidden' : ''}`}>{t('SentenceOfNumberChecked', { count: checkedCount() })}</p>
                     <Add addTask={addTask} />
                 </div>
             </div>
