@@ -30,7 +30,7 @@ function ListTabs() {
     const addTabs = () => {
         const maxId = tabs.reduce((max, tab) => (tab.id > max ? tab.id : max), 0);
         const newTabName = `Liste ${maxId + 1}`;
-        const newTab = { id: maxId + 1, name: newTabName, isActive: false, tasks: [], counterChecked: 0};
+        const newTab = { id: maxId + 1, name: newTabName, isActive: false, tasks: []};
         const tabsList = [...tabs, newTab];
         setTabs(tabsList);
         localStorage.setItem('tabs', JSON.stringify(tabsList));

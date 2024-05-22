@@ -79,26 +79,39 @@ function List({ tab, updateTabs}) {
     const { t } = useTranslation();
 
     return (
-        <div className=" flex justify-center items-center p-6">
-            <div className="w-full max-w-[500px]">
-                <div className={`w-full bg-foregroundColor p-6 rounded-xl overflow-y-scroll max-h-[900px] ${checkedCount() > 4 ? 'glowing-effect' : ''}`}>
-                <EditTab tab={tab} updateTabs={updateTabs}></EditTab>
-                    <div>
-                        <Clear clearAllTasks={clearAllTasks} />
+        <div>
+            <div className=" flex justify-center items-center p-6">
+                <div className="w-full max-w-[500px]">
+                    <div className={`w-full bg-foregroundColor p-6 rounded-xl overflow-y-scroll max-h-[900px] ${checkedCount() > 4 ? 'glowing-effect' : ''}`}>
+                    <EditTab tab={tab} updateTabs={updateTabs}></EditTab>
+                        <div>
+                            <Clear clearAllTasks={clearAllTasks} />
+                        </div>
+                        <ul>
+                            {tasks.map((task, index) => (
+                                <li key={task.id} draggable onDragStart={(event) => handleDragStart(event, task.id)} onDragOver={handleDragOver} onDrop={(event) => handleDrop(event, index)}>
+                                    <Task task={task} deleteTask={deleteTask} editTask={editTask} startEditing={startEditing} cancelEditing={cancelEditing} checkedTask={checkedTask} />
+                                </li>
+                            ))}
+                        </ul>
+                        <p className={`text-center ${checkedCount() === 0 ? 'hidden' : ''}`}>{t('SentenceOfNumberChecked', { count: checkedCount() })}</p>
+                        <Add addTask={addTask} />
                     </div>
-                    <ul>
-                        {tasks.map((task, index) => (
-                            <li key={task.id} draggable onDragStart={(event) => handleDragStart(event, task.id)} onDragOver={handleDragOver} onDrop={(event) => handleDrop(event, index)}>
-                                <Task task={task} deleteTask={deleteTask} editTask={editTask} startEditing={startEditing} cancelEditing={cancelEditing} checkedTask={checkedTask} />
-                            </li>
-                        ))}
-                    </ul>
-                    <p className={`text-center ${checkedCount() === 0 ? 'hidden' : ''}`}>{t('SentenceOfNumberChecked', { count: checkedCount() })}</p>
-                    <Add addTask={addTask} />
                 </div>
             </div>
+            <div className={` ${checkedCount() > 4 ? 'balloon' : ''}`}></div>
+            <div className={` ${checkedCount() > 4 ? 'balloon' : ''}`}></div>
+            <div className={` ${checkedCount() > 4 ? 'balloon' : ''}`}></div>
+            <div className={` ${checkedCount() > 4 ? 'balloon' : ''}`}></div>
+            <div className={` ${checkedCount() > 4 ? 'balloon' : ''}`}></div>
         </div>
     );
 }
 
 export default List; 
+
+
+// 20 taches -> niveau 1 (badge)
+// 40 taches -> niveau 2 
+//...
+// 100 taches -> niveau 5
