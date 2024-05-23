@@ -5,18 +5,18 @@ body {
 
   @keyframes glowing {
     0% {
-        box-shadow: 0 0 5px #33ccff, 0 0 10px #33ccff, 0 0 20px #33ccff, 0 0 40px #33ccff, 0 0 80px #33ccff, 0 0 160px #33ccff;
+        box-shadow: 0 0 5px #ffffff, 0 0 10px #ffffff, 0 0 20px #b2c9d1, 0 0 40px #b2c9d1, 0 0 80px #b2c9d1, 0 0 160px #ffffff;
     }
     50% {
-        box-shadow: 0 0 10px #33ccff, 0 0 20px #33ccff, 0 0 40px #33ccff, 0 0 80px #33ccff, 0 0 160px #33ccff, 0 0 320px #33ccff;
+        box-shadow: 0 0 10px #ffffff, 0 0 20px #ffffff, 0 0 40px #b2c9d1, 0 0 80px #b2c9d1, 0 0 160px #b2c9d1, 0 0 320px #ffffff;
     }
     100% {
-        box-shadow: 0 0 5px #33ccff, 0 0 10px #33ccff, 0 0 20px #33ccff, 0 0 40px #33ccff, 0 0 80px #33ccff, 0 0 160px #33ccff;
+        box-shadow: 0 0 5px #ffffff, 0 0 10px #ffffff, 0 0 20px #b2c9d1, 0 0 40px #b2c9d1, 0 0 80px #b2c9d1, 0 0 160px #ffffff;
     }
 }
 
 .glowing-effect {
-    animation: glowing 5s alternate;
+  animation: glowing 5s alternate;
 }
 
 .balloon {
@@ -64,7 +64,7 @@ body {
     width:1px;
     margin:0 auto;
     content:"";
-    background:rgb(255, 255, 255); 
+    background:rgb(176, 174, 174); 
   }
   
   .balloon:nth-child(2){ background:hsl(245,40%,65%); animation-duration:3.5s, 5s; }
