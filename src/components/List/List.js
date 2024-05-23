@@ -84,7 +84,7 @@ function List({ tab, updateTabs}) {
                 <div className="w-full max-w-[500px]">
                     <div className={`w-full bg-foregroundColor p-6 rounded-xl overflow-y-scroll max-h-[900px] ${checkedCount() > 4 ? 'glowing-effect' : ''}`}>
                     <EditTab tab={tab} updateTabs={updateTabs}></EditTab>
-                        <div>
+                        <div className='flex justify-center'>
                             <Clear clearAllTasks={clearAllTasks} />
                         </div>
                         <ul>
@@ -99,11 +99,13 @@ function List({ tab, updateTabs}) {
                     </div>
                 </div>
             </div>
-            <div className={` ${checkedCount() > 4 ? 'balloon' : ''}`}></div>
-            <div className={` ${checkedCount() > 4 ? 'balloon' : ''}`}></div>
-            <div className={` ${checkedCount() > 4 ? 'balloon' : ''}`}></div>
-            <div className={` ${checkedCount() > 4 ? 'balloon' : ''}`}></div>
-            <div className={` ${checkedCount() > 4 ? 'balloon' : ''}`}></div>
+            <div className='flex justify-center'>
+                <div className={` ${checkedCount() > 4 ? 'balloon' : ''}`}></div>
+                <div className={` ${checkedCount() > 4 ? 'balloon' : ''}`}></div>
+                <div className={` ${checkedCount() > 4 ? 'balloon' : ''}`}></div>
+                <div className={` ${checkedCount() > 4 ? 'balloon' : ''}`}></div>
+                <div className={` ${checkedCount() > 4 ? 'balloon' : ''}`}></div>
+            </div>
         </div>
     );
 }

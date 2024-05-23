@@ -13,7 +13,7 @@ export default function DarkModeToggle() {
   };
 
   return (
-    <div className="dark-mode-toggle-container flex items-center justify-center">
+    <div className="dark-mode-toggle-container flex items-center justify-center pt-4">
       <span style={{ color: darkMode ? 'grey' : 'yellow' }}>☀︎</span>
       <label className="switch">
         <input type="checkbox" checked={darkMode} onChange={toggleDarkMode} />

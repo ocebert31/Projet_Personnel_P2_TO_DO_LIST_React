@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import DeleteTabs from '../ElementOfTabs/DeleteTabs';
 import List from '../List/List';
+import { useTranslation } from 'react-i18next';
 
 function ListTabs() {
     const [tabs, setTabs] = useState([{ id: 1, name: 'Liste 1', isActive: true, tasks: [] }]);
@@ -71,8 +72,11 @@ function ListTabs() {
         localStorage.setItem('tabs', JSON.stringify(updatedTabs));
     }
 
+    const { t } = useTranslation();
+
     return (
-        <div className='min-h-screen'>     
+        <div>     
+        <h1 className='text-center style font-serif text-2xl text-white py-5'>{t('Title')}</h1>
             <div className="flex space-x-4 justify-center">
                 {tabs.map((tab, index) => (
                     <div key={index} className="flex items-center">
