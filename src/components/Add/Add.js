@@ -22,9 +22,15 @@ function Add({ addTask }) {
         return '_' + Math.random().toString(36).substr(2, 9);
     };
 
+    const handleKeyPress = (event) => {
+        if (event.key === 'Enter') {
+          handleChange()
+        }
+    };
+
     return (
         <div className="flex items-center mt-4">
-            <input className="border border-gray-300 rounded-l-lg px-4 py-2 mr-0 w-64" value={name} onChange={saveName} placeholder={t('ExampleAddition')}/>
+            <input onKeyDown={handleKeyPress} className="border border-gray-300 rounded-l-lg px-4 py-2 mr-0 w-64" value={name} onChange={saveName} placeholder={t('ExampleAddition')}/>
             <button onClick={handleChange} className="px-4 py-2 bg-inputButton text-white rounded-r-lg hover:bg-black">
                 {t('AddTask')}
             </button>
