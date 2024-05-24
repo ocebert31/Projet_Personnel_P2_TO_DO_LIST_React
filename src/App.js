@@ -1,13 +1,17 @@
-import React from 'react';
-import './App.css';
-import NavBar from './components/navBar';
+import React, { useState } from 'react';
+import Sidebar from './components/navBar';
 
 function App() {
+  const [darkMode, setDarkMode] = useState(true);
+
+  const toggleDarkMode = () => {
+    setDarkMode(!darkMode);
+  };
+
   return (
     <div>
-       <NavBar />
+      <Sidebar darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
     </div>
-   
   );
 }
 

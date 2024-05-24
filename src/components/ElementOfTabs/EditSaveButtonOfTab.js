@@ -19,7 +19,7 @@ function EditSaveButton({ tab, startEditing, saveChange, cancelEditing, isEditin
     }
 
     return (
-        <div className='flex'>
+        <div className='flex ml-2'>
             {isEditing ? 
                 <div >
                     <button onClick={onClickCheck} className='mr-2 text-green-700'>

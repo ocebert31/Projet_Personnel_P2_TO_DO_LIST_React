@@ -2,8 +2,9 @@ import React, { useState, useEffect } from 'react';
 import DeleteTabs from '../ElementOfTabs/DeleteTabs';
 import List from '../List/List';
 import { useTranslation } from 'react-i18next';
+import "./ListTabs.css";
 
-function ListTabs() {
+function ListTabs({ darkMode }) {
     const [tabs, setTabs] = useState([{ id: 1, name: 'Liste 1', isActive: true, tasks: [] }]);
 
     useEffect(() => {
@@ -75,23 +76,23 @@ function ListTabs() {
     const { t } = useTranslation();
 
     return (
-        <div>     
-        <h1 className='text-center style font-serif text-2xl text-white py-5'>{t('Title')}</h1>
+        <div className={`h-screen ${darkMode ? ' dark' : 'bg-neutral-300'}`}>     
+        <h1 className={`text-center style font-serif text-2xl py-5 font-medium ${darkMode ? ' text-white' : 'text-black'}`}>{t('Title')}</h1>
             <div className="flex space-x-4 justify-center">
                 {tabs.map((tab, index) => (
                     <div key={index} className="flex items-center">
-                        <button className={`text-white ${tab.isActive ? 'underline' : ''}`} onClick={() => changeActiveTab(tab.id)}>
+                        <button className={`${darkMode ? ' text-white' : 'text-black'} ${tab.isActive ? 'underline' : ''}`} onClick={() => changeActiveTab(tab.id)}>
                             {tab.name}
                         </button>  
                         <DeleteTabs onClick={deleteTabs} tabId={tab.id} tabs={tabs}/>
                     </div>
                 ))}
-                <button onClick={addTabs} className="border border-gray-300 px-4 py-2 rounded text-white">+</button>
+                <button onClick={addTabs} className={`border px-4 py-2 rounded ${darkMode ? 'text-white border-white' : 'text-black border-black'}`}>+</button>
             </div>
             <div>
                 {tabs.map((tab, counterChecked) => (
                     <div className={`${tab.isActive ? '' : 'hidden'}`}>
-                        <List tab={tab} updateTabs={updateTabs} setTabs={setTabs} tabs={tabs} counterChecked={counterChecked}></List>
+                        <List tab={tab} updateTabs={updateTabs} setTabs={setTabs} tabs={tabs} counterChecked={counterChecked} darkMode={darkMode}></List>
                     </div>
                 ))}
             </div>

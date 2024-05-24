@@ -7,8 +7,9 @@ import EditTab from '../ElementOfTabs/EditTab';
 import './List.css';
 import { useTranslation } from 'react-i18next';
 
-function List({ tab, updateTabs}) {
+function List({ tab, updateTabs, darkMode}) {
     const [tasks, setTasks] = useState(tab.tasks);
+    const { t } = useTranslation();
 
     useEffect(() => {
         setTasks(tab.tasks);
@@ -76,26 +77,24 @@ function List({ tab, updateTabs}) {
         updateTabTasks(updatedTasks);
     };
 
-    const { t } = useTranslation();
-
     return (
         <div>
             <div className=" flex justify-center items-center p-6">
                 <div className="w-full max-w-[500px]">
-                    <div className={`w-full bg-foregroundColor p-6 rounded-xl overflow-y-scroll max-h-[900px] ${checkedCount() > 4 ? 'glowing-effect' : ''}`}>
-                    <EditTab tab={tab} updateTabs={updateTabs}></EditTab>
+                    <div className={`w-full p-6 overflow-y-scroll max-h-[900px] border-2  ${darkMode ? 'bg-gray-800 border-white' : 'bg-neutral-400 border-black'} ${checkedCount() > 4 ? 'glowing-effect' : ''}`}>
+                    <EditTab tab={tab} updateTabs={updateTabs} darkMode={darkMode}></EditTab>
                         <div className='flex justify-center'>
-                            <Clear clearAllTasks={clearAllTasks} />
+                            <Clear clearAllTasks={clearAllTasks} darkMode={darkMode}/>
                         </div>
                         <ul>
                             {tasks.map((task, index) => (
                                 <li key={task.id} draggable onDragStart={(event) => handleDragStart(event, task.id)} onDragOver={handleDragOver} onDrop={(event) => handleDrop(event, index)}>
-                                    <Task task={task} deleteTask={deleteTask} editTask={editTask} startEditing={startEditing} cancelEditing={cancelEditing} checkedTask={checkedTask} />
+                                    <Task task={task} deleteTask={deleteTask} editTask={editTask} startEditing={startEditing} cancelEditing={cancelEditing} checkedTask={checkedTask} darkMode={darkMode}/>
                                 </li>
                             ))}
                         </ul>
-                        <p className={`text-center ${checkedCount() === 0 ? 'hidden' : ''}`}>{t('SentenceOfNumberChecked', { count: checkedCount() })}</p>
-                        <Add addTask={addTask} />
+                        <p className={`text-center ${darkMode ? 'text-white' : 'text-black'} ${checkedCount() === 0 ? 'hidden' : ''}`}>{t('SentenceOfNumberChecked', { count: checkedCount() })}</p>
+                        <Add addTask={addTask} darkMode={darkMode}/>
                     </div>
                 </div>
             </div>
@@ -110,10 +109,4 @@ function List({ tab, updateTabs}) {
     );
 }
 
-export default List; 
-
-
-// 20 taches -> niveau 1 (badge)
-// 40 taches -> niveau 2 
-//...
-// 100 taches -> niveau 5
+export default List;   

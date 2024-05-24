@@ -5,32 +5,30 @@ import ChangeLanguage from './changeLanguage/changeLanguage';
 import DarkMode from './DarkMode/DarkMode';
 import ListTabs from './ListTabs/ListTabs';
 
-function Sidebar() {
+function Sidebar({ darkMode, toggleDarkMode }) {
   const [isOpen, setIsOpen] = useState(false);
-
+ 
   const toggleSidebar = () => {
     setIsOpen(!isOpen);
   };
 
   return (
-    <div>
-        <div>
-            {isOpen && (
-            <div>
-                <div className="fixed left-0 flex flex-col items-center  h-screen h-full overflow-hidden text-gray-400 rounded border-b w-40 bg-slate-800">
-                <button className="w-full px-3 mt-3 flex items-center justify-end" onClick={toggleSidebar}>
-                    <FontAwesomeIcon icon={faTimes} className="w-8 h-8 fill-current" />
-                </button>
-                <ChangeLanguage />
-                <DarkMode />
-                </div>
-            </div>
-            )}
-        </div>
-        <div>
-            <FontAwesomeIcon icon={faBars} onClick={toggleSidebar} className={`p-4 cursor-pointer text-white ${isOpen ? 'invisible' : ''}`} />
-        </div>
-      <ListTabs />
+    <div style={{ color: darkMode ? '#c96dfd' : 'grey' }}>
+      <div>
+        {isOpen && (
+          <div className={`fixed left-0 flex flex-col items-center h-screen overflow-hidden rounded border-b w-40 ${darkMode ? 'bg-gray-800 text-white' : 'bg-neutral-400 text-black'}`}>
+            <button className="w-full px-3 mt-3 flex items-center justify-end" onClick={toggleSidebar}>
+              <FontAwesomeIcon icon={faTimes} className="w-8 h-8 fill-current" />
+            </button>
+            <ChangeLanguage darkMode={darkMode}/>
+            <DarkMode darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
+          </div>
+        )}
+      </div>
+      <div className={`${darkMode ? ' dark' : 'bg-neutral-300'}`}>
+        <FontAwesomeIcon icon={faBars} onClick={toggleSidebar} className={`p-4 cursor-pointer ${darkMode ? 'text-white' : 'text-black'} ${isOpen ? 'invisible' : ''}`} />
+      </div>
+      <ListTabs darkMode={darkMode}/>
     </div>
   );
 }

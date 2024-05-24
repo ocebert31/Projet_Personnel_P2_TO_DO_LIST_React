@@ -1,17 +1,6 @@
-import React, { useEffect, useState } from 'react';
 import './DarkMode.css';
 
-export default function DarkModeToggle() {
-  const [darkMode, setDarkMode] = useState(true);
-
-  useEffect(() => {
-    document.body.style.backgroundColor = darkMode ? '#123' : '#ffffff';
-  }, [darkMode]);
-
-  const toggleDarkMode = () => {
-    setDarkMode(!darkMode);
-  };
-
+export default function DarkModeToggle({ darkMode, toggleDarkMode }) {
   return (
     <div className="dark-mode-toggle-container flex items-center justify-center pt-4">
       <span style={{ color: darkMode ? 'grey' : 'yellow' }}>☀︎</span>
