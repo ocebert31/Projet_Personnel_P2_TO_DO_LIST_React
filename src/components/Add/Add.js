@@ -29,9 +29,9 @@ function Add({ addTask, darkMode }) {
     };
 
     return (
-        <div className="flex items-center mt-4">
-            <input onKeyDown={handleKeyPress} className={`border-y-2 border-l-2 rounded-l-lg px-4 py-2 mr-0 w-64 ${darkMode ? 'text-white bg-slate-600 border-white' : 'text-black bg-colorInput border-black'}`} value={name} onChange={saveName} placeholder={t('ExampleAddition')}/>
-            <button onClick={handleChange} className={`px-4 py-2 rounded-r-lg border-y-2 border-r-2 ${darkMode ? 'text-white bg-gray-900 border-white' : 'text-black bg-neutral-500 border-black'}`}>
+        <div className="flex items-center mt-4 max-[768px]:justify-center">
+            <input onKeyDown={handleKeyPress} className={`border-y-2 border-l-2 rounded-l-lg px-4 py-2 mr-0 max-[350px]:px-2 max-[350px]:py-2" ${darkMode ? 'text-white bg-slate-600 border-white' : 'text-black bg-colorInput border-black'}`} value={name} onChange={saveName} placeholder={t('ExampleAddition')}/>
+            <button onClick={handleChange} className={`px-4 py-2 rounded-r-lg border-y-2 border-r-2 max-[350px]:px-2 max-[350px]:py-2 ${darkMode ? 'text-white bg-gray-900 border-white' : 'text-black bg-neutral-500 border-black'}`}>
                 {t('AddTask')}
             </button>
         </div>

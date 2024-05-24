@@ -79,11 +79,11 @@ function List({ tab, updateTabs, darkMode}) {
 
     return (
         <div>
-            <div className=" flex justify-center items-center p-6">
-                <div className="w-full max-w-[500px]">
-                    <div className={`w-full p-6 overflow-y-scroll max-h-[900px] border-2  ${darkMode ? 'bg-gray-800 border-white' : 'bg-neutral-400 border-black'} ${checkedCount() > 4 ? 'glowing-effect' : ''}`}>
+            <div className=" flex justify-center items-center p-4">
+                <div className="w-full md:w-4/6">
+                    <div className={`w-full p-6 overflow-y-scroll max-h-[900px] border-2 ${darkMode ? 'bg-gray-800 border-white' : 'bg-neutral-400 border-black'} ${checkedCount() > 4 ? 'glowing-effect' : ''}`}>
                     <EditTab tab={tab} updateTabs={updateTabs} darkMode={darkMode}></EditTab>
-                        <div className='flex justify-center'>
+                        <div className='flex justify-center py-4'>
                             <Clear clearAllTasks={clearAllTasks} darkMode={darkMode}/>
                         </div>
                         <ul>
@@ -98,7 +98,7 @@ function List({ tab, updateTabs, darkMode}) {
                     </div>
                 </div>
             </div>
-            <div className='flex justify-center'>
+            <div className='flex justify-center max-[650px]:hidden'>
                 <div className={` ${checkedCount() > 4 ? 'balloon' : ''}`}></div>
                 <div className={` ${checkedCount() > 4 ? 'balloon' : ''}`}></div>
                 <div className={` ${checkedCount() > 4 ? 'balloon' : ''}`}></div>

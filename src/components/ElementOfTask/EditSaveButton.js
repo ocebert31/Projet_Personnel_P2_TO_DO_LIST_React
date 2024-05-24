@@ -21,7 +21,7 @@ function EditSaveButton({ task, startEditing, saveChange, cancelEditing }) {
     return (
         <div>
             {task.isEditing ? 
-                <div>
+                <div className='max-[350px]:flex'>
                     <button onClick={onClickCheck} className='mr-2 text-green-700 hover:text-green-900'>
                         <FontAwesomeIcon icon={faCheck} />
                     </button>
