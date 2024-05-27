@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Sidebar from './components/navBar';
+import Sidebar from './components/NavBar/NavBar';
 
 function App() {
   const [darkMode, setDarkMode] = useState(true);

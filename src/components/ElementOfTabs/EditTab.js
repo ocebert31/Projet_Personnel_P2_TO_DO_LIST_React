@@ -16,15 +16,15 @@ function EditTab({ tab, updateTabs, darkMode }) {
   const saveChange = () => {
     const updatedTab = { ...tab, name: editedContent };
     updateTabs(updatedTab);
-    setIsEditing(false)
+    setIsEditing(false);
   };
 
   const startEditing = () => {
-    setIsEditing(true)
+    setIsEditing(true);
   }
 
   const cancelEditing = () => {
-    setIsEditing(false)
+    setIsEditing(false);
   }
 
   return (

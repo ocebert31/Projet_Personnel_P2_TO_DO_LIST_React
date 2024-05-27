@@ -77,7 +77,7 @@ function ListTabs({ darkMode }) {
 
     return (
         <div className={`h-screen ${darkMode ? ' dark' : 'bg-neutral-300'}`}>     
-        <h1 className={`text-center style font-serif text-2xl py-5 px-2 font-medium max-[500px]:text-lg ${darkMode ? ' text-white' : 'text-black'}`}>{t('Title')}</h1>
+            <h1 className={`text-center style font-serif text-2xl py-5 px-2 font-medium max-[500px]:text-lg ${darkMode ? ' text-white' : 'text-black'}`}>{t('Title')}</h1>
             <div className="box justify-center p-4 overflow-y-scroll max-h-[150px] ">
                 {tabs.map((tab, index) => (
                     <div key={index} className="flex items-center">

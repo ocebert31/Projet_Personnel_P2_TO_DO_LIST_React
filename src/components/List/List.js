@@ -50,7 +50,7 @@ function List({ tab, updateTabs, darkMode}) {
     };
 
     const checkedCount = () => {
-        return tasks.filter(task => task.isChecked).length
+        return tasks.filter(task => task.isChecked).length;
     }
 
     const updateTabTasks = (updatedTasks) => {
@@ -83,7 +83,7 @@ function List({ tab, updateTabs, darkMode}) {
                 <div className="w-full md:w-4/6">
                     <div className={`w-full p-6 overflow-y-scroll max-h-[900px] border-2 ${darkMode ? 'bg-gray-800 border-white' : 'bg-neutral-400 border-black'} ${checkedCount() > 4 ? 'glowing-effect' : ''}`}>
                     <EditTab tab={tab} updateTabs={updateTabs} darkMode={darkMode}></EditTab>
-                        <div className='flex justify-center py-4'>
+                        <div className='flex py-4'>
                             <Clear clearAllTasks={clearAllTasks} darkMode={darkMode}/>
                         </div>
                         <ul>
@@ -93,7 +93,7 @@ function List({ tab, updateTabs, darkMode}) {
                                 </li>
                             ))}
                         </ul>
-                        <p className={`text-center ${darkMode ? 'text-white' : 'text-black'} ${checkedCount() === 0 ? 'hidden' : ''}`}>{t('SentenceOfNumberChecked', { count: checkedCount() })}</p>
+                        <p className={` ${darkMode ? 'text-white' : 'text-black'} ${checkedCount() === 0 ? 'hidden' : ''}`}>{t('SentenceOfNumberChecked', { count: checkedCount() })}</p>
                         <Add addTask={addTask} darkMode={darkMode}/>
                     </div>
                 </div>

@@ -24,7 +24,7 @@ function Add({ addTask, darkMode }) {
 
     const handleKeyPress = (event) => {
         if (event.key === 'Enter') {
-          handleChange()
+          handleChange();
         }
     };
 

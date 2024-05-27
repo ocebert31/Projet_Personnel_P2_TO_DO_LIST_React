@@ -15,7 +15,7 @@ function EditSaveButton({ tab, startEditing, saveChange, cancelEditing, isEditin
     };
 
     const onClickCancel = () => {
-        cancelEditing()
+        cancelEditing();
     }
 
     return (
