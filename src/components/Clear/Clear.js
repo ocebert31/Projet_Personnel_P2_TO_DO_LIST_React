@@ -28,7 +28,7 @@ function Clear({ clearAllTasks, darkMode }) {
             </button>
             {showModal && (
                 <div className="fixed top-0 left-0 w-full h-full flex items-center justify-center bg-gray-800 bg-opacity-75">
-                    <div className={` p-8 rounded shadow-lg max-[475px]:m-4 ${darkMode ? 'bg-gray-600 border-1 border-white' : 'bg-foregroundColor'}`}>
+                    <div className={` p-8 rounded shadow-lg max-[475px]:m-4 ${darkMode ? 'bg-gray-600 border-1 border-white' : 'bg-neutral-200'}`}>
                         <h2 className={`text-xl font-semibold mb-4 ${darkMode ? 'text-white' : 'text-black'}`}>Confirmation</h2>
                         <p className={`mb-4 ${darkMode ? 'text-white' : 'text-black'}`}>{t('ConfirmQuestion')}</p>
                         <div className="flex justify-between">
