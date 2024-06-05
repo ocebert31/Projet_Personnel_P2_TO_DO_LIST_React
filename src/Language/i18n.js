@@ -2,9 +2,9 @@ import i18n from 'i18next';
 
 import { initReactI18next } from 'react-i18next';
 
-import enTranslations from '../src/en.json'; 
+import enTranslations from './en.json'; 
 
-import frTranslations from '../src/fr.json'; 
+import frTranslations from './fr.json'; 
 
 i18n
 

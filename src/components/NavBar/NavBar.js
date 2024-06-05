@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars, faTimes } from '@fortawesome/free-solid-svg-icons';
-import ChangeLanguage from '../changeLanguage/changeLanguage';
+import ChangeLanguage from '../ChangeLanguage/changeLanguage';
 import DarkMode from '../DarkMode/DarkMode';
-import ListTabs from '../ListTabs/ListTabs';
+import ListTabs from '../ListTabs/Tabs';
 
 function Sidebar({ darkMode, toggleDarkMode }) {
   const [isOpen, setIsOpen] = useState(false);

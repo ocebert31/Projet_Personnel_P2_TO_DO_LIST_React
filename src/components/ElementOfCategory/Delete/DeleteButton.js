@@ -3,8 +3,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
 import './DeleteButton.css';
 
-function DeleteButton({ task, onClick }) {
-    const isEditing = task.isEditing || false;
+function DeleteButtonOfCategory({ onClick, category}) {
+    const isEditing = category.isEditing || false;
 
     return (
         <button onClick={onClick} className={`text-red-700 pr-6 ${isEditing ? '' : 'opacity-0 hover:opacity-100 hide-on-mobile'}`}>
@@ -13,4 +13,4 @@ function DeleteButton({ task, onClick }) {
     );
 }
 
-export default DeleteButton;
+export default DeleteButtonOfCategory;

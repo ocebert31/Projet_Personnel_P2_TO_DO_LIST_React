@@ -1,18 +1,18 @@
-
 import React, { useState, useEffect } from 'react';
-import Add from '../Add/Add';
-import Task from '../Task/task';
-import Clear from '../Clear/Clear';
-import EditTab from '../ElementOfTabs/EditTab';
-import './List.css';
+import Add from '../ElementOfTask/Add/Add';
+import Task from '../ElementOfTask/task';
+import Clear from '../ElementOfTask/Clear/Clear';
+import EditTab from '../ElementOfTab/EditTab';
+import './Tasks.css';
 import { useTranslation } from 'react-i18next';
+import Category from '../ListCategories/Categories';
 
 function List({ tab, updateTabs, darkMode}) {
-    const [tasks, setTasks] = useState(tab.tasks);
+    const [tasks, setTasks] = useState(tab.tasks || []);
     const { t } = useTranslation();
 
     useEffect(() => {
-        setTasks(tab.tasks);
+        setTasks(tab.tasks || []);
     }, [tab.tasks]);
 
     const addTask = (newTask) => {
@@ -58,7 +58,7 @@ function List({ tab, updateTabs, darkMode}) {
         updateTabs(updatedTab);
         setTasks(updatedTasks);
     };
-
+   
     const handleDragStart = (event, taskId) => {
         event.dataTransfer.setData("taskId", taskId);
     };
@@ -83,6 +83,7 @@ function List({ tab, updateTabs, darkMode}) {
                 <div className="w-full md:w-4/6">
                     <div className={`w-full p-6 overflow-y-scroll max-h-[900px] border-2 ${darkMode ? 'bg-gray-800 border-white' : 'bg-neutral-400 border-black'} ${checkedCount() > 4 ? 'glowing-effect' : ''}`}>
                     <EditTab tab={tab} updateTabs={updateTabs} darkMode={darkMode}></EditTab>
+                        <Category darkMode={darkMode} updateTabTasks={updateTabTasks} tabs={tab}></Category>
                         <div className='flex py-4'>
                             <Clear clearAllTasks={clearAllTasks} darkMode={darkMode}/>
                         </div>

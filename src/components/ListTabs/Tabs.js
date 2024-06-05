@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import DeleteTabs from '../ElementOfTabs/DeleteTabs';
-import List from '../List/List';
+import DeleteTabs from '../ElementOfTab/DeleteTabs';
+import List from '../ListTasks/Tasks';
 import { useTranslation } from 'react-i18next';
-import "./ListTabs.css";
+import "./Tabs.css";
 
 function ListTabs({ darkMode }) {
     const [tabs, setTabs] = useState([{ id: 1, name: 'Liste 1', isActive: true, tasks: [] }]);
@@ -92,7 +92,7 @@ function ListTabs({ darkMode }) {
             <div>
                 {tabs.map((tab, counterChecked) => (
                     <div className={`${tab.isActive ? '' : 'hidden'}`}>
-                        <List tab={tab} updateTabs={updateTabs} setTabs={setTabs} tabs={tabs} counterChecked={counterChecked} darkMode={darkMode}></List>
+                        <List tab={tab} updateTabs={updateTabs} tabs={tabs} counterChecked={counterChecked} darkMode={darkMode}></List>
                     </div>
                 ))}
             </div>
