@@ -5,7 +5,7 @@ import { faCheck } from '@fortawesome/free-solid-svg-icons';
 import { faXmark } from '@fortawesome/free-solid-svg-icons';
 
 
-function EditSaveButton({ category, startEditing, saveChange, cancelEditing, isEditing }) {
+function EditSaveButton({ category, startEditing, saveChange, cancelEditing }) {
     const onClickCheck = () => {
         saveChange();
     };
@@ -20,7 +20,7 @@ function EditSaveButton({ category, startEditing, saveChange, cancelEditing, isE
 
     return (
         <div>
-            {isEditing ? 
+            {category.isEditing ? 
                 <div className='max-[350px]:flex'>
                     <button onClick={onClickCheck} className='mr-2 text-green-700 hover:text-green-900'>
                         <FontAwesomeIcon icon={faCheck} />

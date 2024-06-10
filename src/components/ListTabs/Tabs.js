@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import DeleteTabs from '../ElementOfTab/DeleteTabs';
-import List from '../ListTasks/Tasks';
+import DeleteTabs from '../ElementOfTab/Delete/DeleteButton';
+import Tasks from '../ListTasks/Tasks';
 import { useTranslation } from 'react-i18next';
 import "./Tabs.css";
+import Add from '../ElementOfTab/Add/Add';
 
 function ListTabs({ darkMode }) {
     const [tabs, setTabs] = useState([{ id: 1, name: 'Liste 1', isActive: true, tasks: [] }]);
@@ -59,6 +60,7 @@ function ListTabs({ darkMode }) {
             return { ...tab, isActive: false};
         })
         setTabs(updatedTabs);
+        console.log('cc')
         localStorage.setItem('tabs', JSON.stringify(updatedTabs));
     }
 
@@ -87,12 +89,12 @@ function ListTabs({ darkMode }) {
                         <DeleteTabs onClick={deleteTabs} tabId={tab.id} tabs={tabs}/>
                     </div>
                 ))}
-                <button onClick={addTabs} className={`border px-2 rounded ${darkMode ? 'text-white border-white' : 'text-black border-black'}`}>+</button>
+            <Add darkMode={darkMode} addTabs={addTabs}></Add>
             </div>
             <div>
                 {tabs.map((tab, counterChecked) => (
                     <div className={`${tab.isActive ? '' : 'hidden'}`}>
-                        <List tab={tab} updateTabs={updateTabs} tabs={tabs} counterChecked={counterChecked} darkMode={darkMode}></List>
+                        <Tasks tab={tab} updateTabs={updateTabs} tabs={tabs} counterChecked={counterChecked} darkMode={darkMode}></Tasks>
                     </div>
                 ))}
             </div>

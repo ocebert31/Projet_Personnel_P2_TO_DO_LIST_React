@@ -1,9 +1,10 @@
 import Add from '../ElementOfCategory/Add/Add';
 import React, { useState, useEffect } from 'react';
 import CategoryList from '../ElementOfCategory/Category';
+import './Categories.css'
 
 function Categories({ darkMode }) {
-    const [categories, setCategories] = useState([{ id: 1, name: 'Catégorie 1', isActive: true }]);
+    const [categories, setCategories] = useState([{ id: 1, name: 'Catégorie 1', isActive: true, isEditing: false }]);
 
     useEffect(() => {
         const savedCatedgoriesList = localStorage.getItem('categories');
@@ -14,7 +15,7 @@ function Categories({ darkMode }) {
     const addCategories = () => {
         const maxId = categories.reduce((max, category) => (category.id > max ? category.id : max), 0);
         const newCategoryName = `Catégorie ${maxId + 1}`;
-        const newCategory = { id: maxId + 1, name: newCategoryName, isActive: false};
+        const newCategory = { id: maxId + 1, name: newCategoryName, isActive: false, isEditing: false};
         const categoriesList = [...categories, newCategory];
         setCategories(categoriesList);
         localStorage.setItem('categories', JSON.stringify(categoriesList));
@@ -44,23 +45,12 @@ function Categories({ darkMode }) {
         localStorage.setItem('categories', JSON.stringify(updatedCategories));
     };
 
-    const updateCategories = (updatedCategory) => {
-        const updatedCategories = categories.map(category => {
-            if (category.id === updatedCategory.id) {
-                return updatedCategory;
-            }
-            return category;
-        })
-        setCategories(updatedCategories);
-        localStorage.setItem('categories', JSON.stringify(updatedCategories));
-    }
-
     return (
         <div>
-            <ul>
+            <ul className='custom-grid justify-center p-4 overflow-y-scroll max-h-[150px] '>
                 {categories.map((category) => (
-                    <li key={category.id}>
-                        <CategoryList updateCategories={updateCategories} category={category} deleteCategory={deleteCategory} editCategory={editCategory} startEditing={startEditing} cancelEditing={cancelEditing} darkMode={darkMode}/>
+                    <li key={category.id} className="flex items-center">
+                        <CategoryList category={category} deleteCategory={deleteCategory} editCategory={editCategory} startEditing={startEditing} cancelEditing={cancelEditing} darkMode={darkMode}/>
                     </li>
                 ))}
             </ul>

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import EditSaveButtonOfTab from './EditSaveButtonOfTab';
+import EditSaveButton from './EditSaveButton';
 
 function EditTab({ tab, updateTabs, darkMode }) {
   const [editedContent, setEditedContent] = useState(tab.name);
@@ -36,7 +36,7 @@ function EditTab({ tab, updateTabs, darkMode }) {
           <h2 className={`break-all text-2xl font-medium ${darkMode ? 'text-white' : 'text-black'}`}>{tab.name}</h2>
         </div>
       )}
-      <EditSaveButtonOfTab tab={tab} isEditing={isEditing} startEditing={startEditing} saveChange={saveChange} cancelEditing={cancelEditing} />
+      <EditSaveButton tab={tab} isEditing={isEditing} startEditing={startEditing} saveChange={saveChange} cancelEditing={cancelEditing} />
     </div>
   );
 }
