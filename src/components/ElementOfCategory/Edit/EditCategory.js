@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import EditSaveButton from './EditSaveButton';
 import './EditCategory.css';
 
-function EditCategory({ darkMode, editCategory, startEditing, cancelEditing, category}) {
+function EditCategory({ darkMode, editCategory, startEditing, cancelEditing, category, hex}) {
   const [editedContent, setEditedContent] = useState(category.name);
 
   const handleChange = (e) => {
@@ -18,7 +18,8 @@ function EditCategory({ darkMode, editCategory, startEditing, cancelEditing, cat
       {category.isEditing ? (
         <input type="text" value={editedContent} onChange={handleChange} className={` mr-2 ${darkMode ? 'text-white bg-slate-600' : 'text-black bg-colorInput'}`}/>
       ) : (
-        <div className='mr-1 grid-cols-2' >
+        <div className='flex mr-1 grid-cols-2 items-center justify-center' >
+          <div className='flex' style={{ backgroundColor: hex, width: 15, height: 15}}></div>
           <div className={`break-all text-l font-medium category-single-line  ${darkMode ? 'text-white' : 'text-black'}`} style={{ maxWidth: '200px' }}>{category.name}</div>
         </div>
       )}

@@ -1,10 +1,10 @@
 import Add from '../ElementOfCategory/Add/Add';
 import React, { useState, useEffect } from 'react';
-import CategoryList from '../ElementOfCategory/Category';
+import Category from '../ElementOfCategory/Category';
 import './Categories.css'
 
 function Categories({ darkMode }) {
-    const [categories, setCategories] = useState([{ id: 1, name: 'Catégorie 1', isActive: true, isEditing: false }]);
+    const [categories, setCategories] = useState([{ id: 1, name: 'Catégorie 1', isActive: true, isEditing: false, hex: '#ffffff' }]);
 
     useEffect(() => {
         const savedCatedgoriesList = localStorage.getItem('categories');
@@ -12,13 +12,22 @@ function Categories({ darkMode }) {
             setCategories(JSON.parse(savedCatedgoriesList));
     }, []);
 
+    console.log(categories)
+
     const addCategories = () => {
+        const randomColor = "#" + Math.floor(Math.random() * 16777215).toString(16);
+
         const maxId = categories.reduce((max, category) => (category.id > max ? category.id : max), 0);
         const newCategoryName = `Catégorie ${maxId + 1}`;
-        const newCategory = { id: maxId + 1, name: newCategoryName, isActive: false, isEditing: false};
-        const categoriesList = [...categories, newCategory];
+        const newCategory = { id: maxId + 1, name: newCategoryName, isActive: false, isEditing: false, hex: randomColor};
+        let categoriesList = [...categories, newCategory];
         setCategories(categoriesList);
-        localStorage.setItem('categories', JSON.stringify(categoriesList));
+
+        
+         
+        
+        localStorage.setItem('categories', JSON.stringify(categoriesList)); 
+       
     };
 
     const deleteCategory = (categoryId) => {
@@ -50,7 +59,7 @@ function Categories({ darkMode }) {
             <ul className='custom-grid justify-center p-4 overflow-y-scroll max-h-[150px] '>
                 {categories.map((category) => (
                     <li key={category.id} className="flex items-center">
-                        <CategoryList category={category} deleteCategory={deleteCategory} editCategory={editCategory} startEditing={startEditing} cancelEditing={cancelEditing} darkMode={darkMode}/>
+                        <Category category={category} deleteCategory={deleteCategory} editCategory={editCategory} startEditing={startEditing} cancelEditing={cancelEditing} darkMode={darkMode} hex={category.hex}/>
                     </li>
                 ))}
             </ul>
