@@ -94,7 +94,7 @@ function ListTabs({ darkMode }) {
             <div>
                 {tabs.map((tab, counterChecked) => (
                     <div className={`${tab.isActive ? '' : 'hidden'}`}>
-                        <Tasks tab={tab} updateTabs={updateTabs} tabs={tabs} counterChecked={counterChecked} darkMode={darkMode}></Tasks>
+                        <Tasks tab={tab} updateTabs={updateTabs} counterChecked={counterChecked} darkMode={darkMode}></Tasks>
                     </div>
                 ))}
             </div>

@@ -77,6 +77,10 @@ function List({ tab, updateTabs, darkMode}) {
         updateTabTasks(updatedTasks);
     };
 
+    const selectTasksCategory = () => {
+
+    }
+
     return (
         <div>
             <div className=" flex justify-center items-center p-4">

@@ -15,19 +15,13 @@ function Categories({ darkMode }) {
     console.log(categories)
 
     const addCategories = () => {
-        const randomColor = "#" + Math.floor(Math.random() * 16777215).toString(16);
-
         const maxId = categories.reduce((max, category) => (category.id > max ? category.id : max), 0);
         const newCategoryName = `Catégorie ${maxId + 1}`;
+        const randomColor = "#" + Math.floor(Math.random() * 16777215).toString(16);
         const newCategory = { id: maxId + 1, name: newCategoryName, isActive: false, isEditing: false, hex: randomColor};
         let categoriesList = [...categories, newCategory];
         setCategories(categoriesList);
-
-        
-         
-        
-        localStorage.setItem('categories', JSON.stringify(categoriesList)); 
-       
+        localStorage.setItem('categories', JSON.stringify(categoriesList));   
     };
 
     const deleteCategory = (categoryId) => {
