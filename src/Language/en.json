@@ -7,5 +7,6 @@
     "TitleConfirm": "Confirmation",
     "AddTask": "Add",
     "ExampleAddition": "Enter a new task...",
-    "SentenceOfNumberChecked": "You have completed {{count}} tasks !"
+    "SentenceOfNumberChecked": "You have completed {{count}} tasks !",
+    "AddCategory": "Add a category +"
 }
