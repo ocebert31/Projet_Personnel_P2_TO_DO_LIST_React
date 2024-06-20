@@ -7,7 +7,7 @@ function DeleteButton({ task, onClick }) {
     const isEditing = task.isEditing || false;
 
     return (
-        <button onClick={onClick} className={`text-green-700 pr-6 ${isEditing ? '' : 'opacity-0 hover:opacity-100 hide-on-mobile'}`}>
+        <button onClick={onClick} className={`text-red-700 pr-6 ${isEditing ? '' : 'opacity-0 hover:opacity-100 hide-on-mobile'}`}>
             <FontAwesomeIcon icon={faTrash} />
         </button>
     );

@@ -12,7 +12,7 @@ function Add({ addTask, darkMode }) {
     const handleChange = () => {
         const newName = name.trim();
         if (newName !== '') {
-            const newTask = { name: newName, id: generateUID(), isEditing: false, isChecked: false };
+            const newTask = { name: newName, id: generateUID(), isEditing: false, isChecked: false, categoryId: null };
             addTask(newTask);
             setName('');
         }

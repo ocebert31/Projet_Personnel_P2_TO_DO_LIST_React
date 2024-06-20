@@ -3,9 +3,14 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faRotateRight } from '@fortawesome/free-solid-svg-icons';
 import { useTranslation } from 'react-i18next';
 
-function Clear({ clearAllTasks, darkMode }) {
+function Clear({ updateTabs, darkMode, tab }) {
     const { t } = useTranslation();
     const [showModal, setShowModal] = useState(false);
+
+    const clearAllTasks = () => {
+        const updatedTab = { ...tab, tasks: [] };
+        updateTabs(updatedTab);
+    };
 
     const handleClearTasks = () => {
         setShowModal(true);

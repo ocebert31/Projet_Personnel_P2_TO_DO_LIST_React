@@ -1,18 +1,19 @@
 import Add from '../ElementOfCategory/Add/Add';
 import React, { useState, useEffect } from 'react';
 import Category from '../ElementOfCategory/Category';
-import './Categories.css'
 
-function Categories({ darkMode }) {
-    const [categories, setCategories] = useState([{ id: 1, name: 'Catégorie 1', isActive: true, isEditing: false, hex: '#ffffff' }]);
+function Categories({ darkMode, tab, updateTabs, updateTabTasks}) {
+    const [categories, setCategories] = useState(tab.categories || []);
 
     useEffect(() => {
-        const savedCatedgoriesList = localStorage.getItem('categories');
-        if (savedCatedgoriesList)
-            setCategories(JSON.parse(savedCatedgoriesList));
-    }, []);
+        setCategories(tab.categories || []);
+    }, [tab.categories]);
 
-    console.log(categories)
+    const updateTabCategories = (updatedCategories) => {
+        const updatedTab = { ...tab, categories: updatedCategories };
+        updateTabs(updatedTab);
+        setCategories(updatedCategories);
+    };
 
     const addCategories = () => {
         const maxId = categories.reduce((max, category) => (category.id > max ? category.id : max), 0);
@@ -20,40 +21,37 @@ function Categories({ darkMode }) {
         const randomColor = "#" + Math.floor(Math.random() * 16777215).toString(16);
         const newCategory = { id: maxId + 1, name: newCategoryName, isActive: false, isEditing: false, hex: randomColor};
         let categoriesList = [...categories, newCategory];
-        setCategories(categoriesList);
-        localStorage.setItem('categories', JSON.stringify(categoriesList));   
+        updateTabCategories(categoriesList);
     };
 
     const deleteCategory = (categoryId) => {
         const updatedCategories = categories.filter(category => category.id !== categoryId);
-        setCategories(updatedCategories);
-        localStorage.setItem('categories', JSON.stringify(updatedCategories));
+        updateTabCategories(updatedCategories);
     };
 
     const editCategory = (categoryId, newName) => {
         const updatedCategories = categories.map(category => (category.id === categoryId ? { ...category, name: newName, isEditing: false } : category));
-        setCategories(updatedCategories);
-        localStorage.setItem('categories', JSON.stringify(updatedCategories));
+        updateTabCategories(updatedCategories);
     };
 
     const startEditing = (categoryId) => {
         const updatedCategories = categories.map(category => (category.id === categoryId ? { ...category, isEditing: true } : { ...category, isEditing: false }));
-        setCategories(updatedCategories);
-        localStorage.setItem('categories', JSON.stringify(updatedCategories));
+        updateTabCategories(updatedCategories);
     };
 
     const cancelEditing = () => {
         const updatedCategories = categories.map(category => ({ ...category, isEditing: false }));
-        setCategories(updatedCategories);
-        localStorage.setItem('categories', JSON.stringify(updatedCategories));
+        updateTabCategories(updatedCategories);
     };
+
+    
 
     return (
         <div>
-            <ul className='custom-grid justify-center p-4 overflow-y-scroll max-h-[150px] '>
+            <ul className={`justify-center p-4 overflow-y-scroll max-h-[250px] ${categories.length === 0 ? 'hidden' : ''}`}>
                 {categories.map((category) => (
-                    <li key={category.id} className="flex items-center">
-                        <Category category={category} deleteCategory={deleteCategory} editCategory={editCategory} startEditing={startEditing} cancelEditing={cancelEditing} darkMode={darkMode} hex={category.hex}/>
+                    <li key={category.id} className="flex items-center pb-2">
+                        <Category updateTabTasks={updateTabTasks} category={category} deleteCategory={deleteCategory} editCategory={editCategory} startEditing={startEditing} cancelEditing={cancelEditing} darkMode={darkMode} hex={category.hex} tab={tab} updateTabs={updateTabs}/>
                     </li>
                 ))}
             </ul>
