@@ -36,9 +36,9 @@ function List({ tab, darkMode, updateTabTasks, categoryId, updateTabs}) {
         updateTabTasks(updatedTasks);
     };
 
-    const checkedCount = () => {
-        return tasks.filter(task => task.isChecked).length;
-    }
+    // const checkedCount = () => {
+    //     return tasks.filter(task => task.isChecked).length;
+    // }
 
    
   const handleDragStart = (event, taskId) => {
@@ -71,13 +71,6 @@ function List({ tab, darkMode, updateTabTasks, categoryId, updateTabs}) {
                     </li>
                 ))}
             </ul>
-            <div className='flex justify-center max-[650px]:hidden'>
-                <div className={` ${checkedCount() > 4 ? 'balloon' : ''}`}></div>
-                <div className={` ${checkedCount() > 4 ? 'balloon' : ''}`}></div>
-                <div className={` ${checkedCount() > 4 ? 'balloon' : ''}`}></div>
-                <div className={` ${checkedCount() > 4 ? 'balloon' : ''}`}></div>
-                <div className={` ${checkedCount() > 4 ? 'balloon' : ''}`}></div>
-            </div>
         </div>
     );
 }

@@ -16,6 +16,10 @@
     text-overflow: ellipsis;
 }
 
+.height {
+    min-height: 700px;
+}
+
 @media (max-width: 400px) {
     .box {
         grid-template-columns: repeat(auto-fill,minmax(80px, 0.5fr));
