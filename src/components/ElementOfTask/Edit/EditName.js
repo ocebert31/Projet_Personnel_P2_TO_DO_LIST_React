@@ -28,11 +28,11 @@ function EditButton({ task, editTask, startEditing, cancelEditing, checkedTask, 
   }
 
   const categoryColor = () => {
-    const selectedCategory = tab.categories.find(category => category.id === task.categoryId);
+    let categories = tab.categories || [];
+    const selectedCategory = categories.find(category => category.id === task.categoryId);
     if(selectedCategory) {
       return selectedCategory.hex;
     }
-    
   }
 
   return (

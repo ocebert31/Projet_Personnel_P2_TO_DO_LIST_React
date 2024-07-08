@@ -28,7 +28,7 @@ function Tab({ darkMode, tab, updateTabs }) {
         <div className={`${tab.isActive ? '' : 'hidden'}`}>
             <div className=" flex justify-center items-center p-4">
                 <div className="w-full md:w-4/6">
-                    <div className={`w-full p-6 overflow-y-scroll max-h-[900px] border-2 ${darkMode ? 'bg-red-800 border-white' : 'bg-neutral-400 border-black'} ${checkedCount() > 4 ? 'glowing-effect' : ''}`}>
+                    <div className={`w-full p-6 overflow-y-scroll max-h-[900px] border-2 ${darkMode ? 'bg-gray-800 border-white' : 'bg-neutral-400 border-black'} ${checkedCount() > 4 ? 'glowing-effect' : ''}`}>
                         <EditTab tab={tab} updateTabs={updateTabs} darkMode={darkMode}></EditTab>
                         <div className='flex pt-4'>
                             <ClearTasks darkMode={darkMode} tab={tab} updateTabs={updateTabs}/>

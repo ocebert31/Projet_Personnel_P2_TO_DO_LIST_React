@@ -44,8 +44,6 @@ function Categories({ darkMode, tab, updateTabs, updateTabTasks}) {
         updateTabCategories(updatedCategories);
     };
 
-    
-
     return (
         <div>
             <ul className={`justify-center p-4 overflow-y-scroll max-h-[250px] ${categories.length === 0 ? 'hidden' : ''}`}>
