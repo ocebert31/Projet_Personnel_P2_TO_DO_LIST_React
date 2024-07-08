@@ -35,14 +35,9 @@ function List({ tab, darkMode, updateTabTasks, categoryId, updateTabs}) {
         const updatedTasks = tasks.map(task => (task.id === taskId ? { ...task, isChecked: !task.isChecked } : task));
         updateTabTasks(updatedTasks);
     };
-
-    // const checkedCount = () => {
-    //     return tasks.filter(task => task.isChecked).length;
-    // }
-
    
-  const handleDragStart = (event, taskId) => {
-        event.dataTransfer.setData("text/plain", taskId.toString()); // Ensure taskId is a string
+    const handleDragStart = (event, taskId) => {
+        event.dataTransfer.setData("text/plain", taskId.toString());
     };
 
     const handleDragOver = (event) => {
@@ -52,7 +47,7 @@ function List({ tab, darkMode, updateTabTasks, categoryId, updateTabs}) {
     
     const handleDrop = (event, droppedIndex) => {
         event.preventDefault();
-        const draggedTaskId = event.dataTransfer.getData("text/plain"); // Retrieve taskId as a string
+        const draggedTaskId = event.dataTransfer.getData("text/plain");
         console.log('Drop:', draggedTaskId, 'at index', droppedIndex);
         const draggedTaskIndex = tasks.findIndex(task => task.id === draggedTaskId);
         const updatedTasks = [...tasks];
