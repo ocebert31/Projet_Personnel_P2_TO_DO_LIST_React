@@ -60,7 +60,7 @@ function List({ tab, darkMode, updateTabTasks, categoryId, updateTabs}) {
     return (
         <div>
             <ul>
-                {tasks.filter(task => task.categoryId === categoryId).map((task, index) => (
+                {tasks.filter(task => (task.categoryId === categoryId) || (categoryId === null && task.categoryId === undefined)).map((task, index) => (
                     <li key={task.id} draggable onDragStart={(event) => handleDragStart(event, task.id)} onDragOver={handleDragOver} onDrop={(event) => handleDrop(event, index)}>
                         <Task updateTabTasks={updateTabTasks} updateTabs={updateTabs} task={task} deleteTask={deleteTask} editTask={editTask} startEditing={startEditing} cancelEditing={cancelEditing} checkedTask={checkedTask} darkMode={darkMode} tab={tab}/>
                     </li>

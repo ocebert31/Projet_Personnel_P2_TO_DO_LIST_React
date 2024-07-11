@@ -29,10 +29,12 @@ function EditButton({ task, editTask, startEditing, cancelEditing, checkedTask, 
 
   const categoryColor = () => {
     let categories = tab.categories || [];
+    console.log(categories)
     const selectedCategory = categories.find(category => category.id === task.categoryId);
     if(selectedCategory) {
       return selectedCategory.hex;
     }
+    console.log(selectedCategory)
   }
 
   return (

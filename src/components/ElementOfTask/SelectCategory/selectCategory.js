@@ -6,6 +6,7 @@ function SelectCategory({ tab, saveChangeColor, categoryColor }) {
  
 
   const handleColorChange = (e) => {
+    console.log(categories)
     const selectedCategory = categories.find(category => category.hex === e.target.value);
     setSelectedColor("");
     saveChangeColor(selectedCategory);
